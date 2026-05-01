@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Anthony Michael (TonyDev) — Full-Stack Developer building scalable web applications, SaaS products, and pixel-perfect interfaces."
+    />
+    <meta
+      property="og:title"
+      content="Anthony Michael — Full-Stack Developer"
+    />
+    <meta
+      property="og:description"
+      content="I build scalable web apps, SaaS products, and pixel-perfect interfaces."
+    />
+    <meta property="og:type" content="website" />
+    <title>Anthony Michael — Full-Stack Developer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+    <div class="toast" id="toast" role="alert" aria-live="polite">
+      <i class="fas fa-check-circle" aria-hidden="true"></i>
+      <span>Message sent! I'll get back to you soon.</span>
+    </div>
+
+    <!--  NAV  -->
+    <header class="nav" id="nav" role="banner">
+      <div class="nav__inner">
+        <a href="#hero" class="nav__logo" aria-label="TonyDev — Home">
+          <div class="nav__logo-mark" aria-hidden="true">T</div>
+          Tony<span class="nav__logo-dev">Dev</span>
+        </a>
+
+        <nav aria-label="Main navigation">
+          <ul class="nav__links">
+            <li><a href="#about" class="nav__link">About</a></li>
+            <li><a href="#skills" class="nav__link">Skills</a></li>
+            <li><a href="#projects" class="nav__link">Projects</a></li>
+            <li><a href="#services" class="nav__link">Services</a></li>
+            <li><a href="#contact" class="nav__link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav__actions">
+          <button
+            class="nav__theme"
+            id="themeToggle"
+            aria-label="Toggle colour theme"
+          >
+            <i class="fas fa-moon" id="themeIcon" aria-hidden="true"></i>
+          </button>
+          <a href="#contact" class="btn-hire">Hire Me</a>
+          <button
+            class="nav__hamburger"
+            id="hamburger"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="nav__mobile"
+        id="mobileNav"
+        role="navigation"
+        aria-label="Mobile navigation"
+      >
+        <a href="#about" class="nav__link" data-mobile-link>About</a>
+        <a href="#skills" class="nav__link" data-mobile-link>Skills</a>
+        <a href="#projects" class="nav__link" data-mobile-link>Projects</a>
+        <a href="#services" class="nav__link" data-mobile-link>Services</a>
+        <a href="#contact" class="nav__link" data-mobile-link>Contact</a>
+        <a
+          href="#contact"
+          class="btn-hire"
+          data-mobile-link
+          style="width: fit-content"
+          >Hire Me</a
+        >
+      </div>
+    </header>
+
+    <!-- HERO  -->
+    <section class="hero section" id="hero" aria-label="Introduction">
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="hero__orb" aria-hidden="true"></div>
+
+      <div class="container hero__inner">
+        <div class="hero__layout">
+          <!-- LEFT  -->
+          <div class="hero__left">
+            <div class="hero__available" role="status">
+              <div class="hero__available-dot" aria-hidden="true"></div>
+              Available for new opportunities
+            </div>
+
+            <h1 class="hero__name">
+              Anthony<br />
+              <span class="hero__name-accent">Michael.</span>
+            </h1>
+
+            <div class="hero__role-wrap" aria-live="polite">
+              <span class="hero__role-prefix">I'm a </span>
+              <span id="typewriter"></span>
+            </div>
+
+            <p class="hero__desc">
+              Full-stack developer from Nigeria building scalable web
+              applications, SaaS products, and pixel-perfect interfaces. I turn
+              ideas into production-ready products that actually work.
+            </p>
+
+            <div class="hero__stats" aria-label="Quick stats">
+              <div class="hero__stat-item">
+                <span class="hero__stat-num">5+</span>
+                <span class="hero__stat-label">Projects Live</span>
+              </div>
+              <div class="hero__stat-divider" aria-hidden="true"></div>
+              <div class="hero__stat-item">
+                <span class="hero__stat-num">1</span>
+                <span class="hero__stat-label">SaaS Product</span>
+              </div>
+              <div class="hero__stat-divider" aria-hidden="true"></div>
+              <div class="hero__stat-item">
+                <span class="hero__stat-num">2+</span>
+                <span class="hero__stat-label">Clients</span>
+              </div>
+              <div class="hero__stat-divider" aria-hidden="true"></div>
+              <div class="hero__stat-item">
+                <span class="hero__stat-num">∞</span>
+                <span class="hero__stat-label">Curiosity</span>
+              </div>
+            </div>
+
+            <div class="hero__actions">
+              <a href="#projects" class="btn-primary">
+                <i class="fas fa-folder-open" aria-hidden="true"></i>
+                View My Work
+              </a>
+              <a href="#contact" class="btn-outline">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+                Get In Touch
+              </a>
+            </div>
+
+            <div class="hero__social" role="list" aria-label="Social links">
+              <a
+                href="https://github.com/TonytheDev01"
+                target="_blank"
+                rel="noopener"
+                class="social-link"
+                aria-label="GitHub"
+                role="listitem"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/anthony-chuksmichael/"
+                target="_blank"
+                rel="noopener"
+                class="social-link"
+                aria-label="LinkedIn"
+                role="listitem"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a
+                href="https://x.com/Tonymichuks"
+                target="_blank"
+                rel="noopener"
+                class="social-link"
+                aria-label="Twitter"
+                role="listitem"
+                ><i class="fab fa-twitter"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- RIGHT — Photo  -->
+          <div class="hero__photo-col">
+            <div class="hero__photo-wrap">
+              <div class="hero__photo-glow" aria-hidden="true"></div>
+              <div class="hero__photo-ring" aria-hidden="true"></div>
+
+              <img
+                class="hero__photo-img"
+                src="assets/images/tonydev.png"
+                alt="Anthony Michael — Full-Stack Developer"
+                loading="eager"
+              />
+
+              <div class="hero__photo-tag tag-tl" aria-hidden="true">
+                <div
+                  class="hero__photo-tag-dot"
+                  style="background: #cdff47"
+                ></div>
+                Available to hire
+              </div>
+              <div class="hero__photo-tag tag-br" aria-hidden="true">
+                <div
+                  class="hero__photo-tag-dot"
+                  style="background: #52ffb8"
+                ></div>
+                Based in Nigeria 🇳🇬
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <div class="hero__scroll-line"></div>
+        <span>SCROLL</span>
+      </div>
+    </section>
+
+    <!-- ══ ABOUT ══════════════════════════════════ -->
+    <section class="section" id="about" aria-label="About me">
+      <div class="container">
+        <div class="about__grid">
+          <div class="about__text">
+            <div class="section-label">About Me</div>
+            <h2 class="section-title">I build things<br />for the web.</h2>
+            <p>
+              I'm <strong>Anthony Michael</strong>, a self-taught
+              <span class="about__highlight">Full-Stack Developer</span>
+              based in Nigeria. I design and build web applications that are
+              fast, accessible, and production-grade — from frontend UI to
+              backend APIs.
+            </p>
+            <p>
+              My stack spans vanilla JavaScript to Node.js, PostgreSQL, and
+              beyond. I've shipped a multi-role SaaS platform
+              <strong>(EventPro)</strong>, a full e-commerce frontend
+              <strong>(FreshBasket Market)</strong>, and client sites that are
+              live and serving real users.
+            </p>
+            <p>
+              When I'm not coding, I'm writing about web development I published
+              <strong>HTML From Zero Vol.1</strong> to help beginners actually
+              understand the fundamentals.
+            </p>
+            <div class="about__tags">
+              <span class="tag">Nigeria 🇳🇬</span>
+              <span class="tag">Open to Remote</span>
+              <span class="tag">Full-Stack Dev</span>
+              <span class="tag">UI/UX Design</span>
+              <span class="tag">Technical Writing</span>
+              <span class="tag">Graphic Design</span>
+            </div>
+          </div>
+
+          <div
+            class="about__terminal reveal"
+            aria-label="Developer info in terminal format"
+          >
+            <div class="terminal__header">
+              <div class="terminal__dot"></div>
+              <div class="terminal__dot"></div>
+              <div class="terminal__dot"></div>
+              <div class="terminal__title">anthony.json</div>
+            </div>
+            <div class="terminal__body" aria-hidden="true">
+              <div class="terminal__line">
+                <span class="t-prompt">→</span>&nbsp;<span class="t-cmd"
+                  >cat</span
+                >&nbsp;<span class="t-str">anthony.json</span>
+              </div>
+              <div class="t-blank"></div>
+              <div class="terminal__line"><span class="t-key">{</span></div>
+              <div class="terminal__line">
+                &nbsp;&nbsp;<span class="t-key">"name":</span>&nbsp;<span
+                  class="t-str"
+                  >"Anthony Michael"</span
+                >,
+              </div>
+              <div class="terminal__line">
+                &nbsp;&nbsp;<span class="t-key">"alias":</span>&nbsp;<span
+                  class="t-str"
+                  >"TonyDev"</span
+                >,
+              </div>
+              <div class="terminal__line">
+                &nbsp;&nbsp;<span class="t-key">"role":</span>&nbsp;<span
+                  class="t-str"
+                  >"Full-Stack Developer"</span
+                >,
+              </div>
+              <div class="terminal__line">
+                &nbsp;&nbsp;<span class="t-key">"location":</span>&nbsp;<span
+                  class="t-str"
+                  >"Nigeria 🇳🇬"</span
+                >,
+              </div>
+              <div class="terminal__line">
+                &nbsp;&nbsp;<span class="t-key">"available":</span>&nbsp;<span
+                  class="t-val"
+                  >true</span
+                >,
+              </div>
+              <div class="terminal__line">
+                &nbsp;&nbsp;<span class="t-key">"focus":</span>&nbsp;[
+              </div>
+              <div class="terminal__line">
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str"
+                  >"Web Development"</span
+                >,
+              </div>
+              <div class="terminal__line">
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str"
+                  >"SaaS Products"</span
+                >,
+              </div>
+              <div class="terminal__line">
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str"
+                  >"UI/UX Design"</span
+                >
+              </div>
+              <div class="terminal__line">&nbsp;&nbsp;],</div>
+              <div class="terminal__line">
+                &nbsp;&nbsp;<span class="t-key">"coffee":</span>&nbsp;<span
+                  class="t-val"
+                  >true</span
+                >
+              </div>
+              <div class="terminal__line"><span class="t-key">}</span></div>
+              <div class="t-blank"></div>
+              <div class="terminal__line">
+                <span class="t-comment">// Let's build something great.</span>
+              </div>
+              <div class="terminal__line"><span class="t-prompt">█</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS CAROUSEL  -->
+    <section class="section skills" id="skills" aria-label="Skills">
+      <div class="container">
+        <div class="skills__header">
+          <div>
+            <div class="section-label">Skills</div>
+            <h2 class="section-title">My Toolbox</h2>
+          </div>
+          <p class="section-sub">
+            Technologies and tools I use to ship production-ready products.
+          </p>
+        </div>
+
+        <div class="carousel-wrapper">
+          <div class="carousel-track-outer">
+            <div class="carousel-track" id="skillsTrack">
+              <div class="skill-group">
+                <div class="skill-group__icon">
+                  <i class="fas fa-code" aria-hidden="true"></i>
+                </div>
+                <div class="skill-group__title">Frontend</div>
+                <div class="skill-pills">
+                  <span class="skill-pill featured">HTML5</span>
+                  <span class="skill-pill featured">CSS3</span>
+                  <span class="skill-pill featured">JavaScript</span>
+                  <span class="skill-pill">Responsive Design</span>
+                  <span class="skill-pill">CSS Animations</span>
+                  <span class="skill-pill">Accessibility</span>
+                  <span class="skill-pill">DOM APIs</span>
+                </div>
+              </div>
+
+              <div class="skill-group">
+                <div class="skill-group__icon">
+                  <i class="fas fa-server" aria-hidden="true"></i>
+                </div>
+                <div class="skill-group__title">Backend &amp; Database</div>
+                <div class="skill-pills">
+                  <span class="skill-pill featured">Node.js</span>
+                  <span class="skill-pill featured">Express.js</span>
+                  <span class="skill-pill featured">PostgreSQL</span>
+                  <span class="skill-pill">REST APIs</span>
+                  <span class="skill-pill">JWT Auth</span>
+                  <span class="skill-pill">Supabase</span>
+                  <span class="skill-pill">Appwrite</span>
+                </div>
+              </div>
+
+              <div class="skill-group">
+                <div class="skill-group__icon">
+                  <i class="fas fa-tools" aria-hidden="true"></i>
+                </div>
+                <div class="skill-group__title">Tools &amp; Workflow</div>
+                <div class="skill-pills">
+                  <span class="skill-pill featured">Git &amp; GitHub</span>
+                  <span class="skill-pill featured">VS Code</span>
+                  <span class="skill-pill">Netlify</span>
+                  <span class="skill-pill">Vercel</span>
+                  <span class="skill-pill">GitHub Pages</span>
+                  <span class="skill-pill">Figma</span>
+                  <span class="skill-pill">Swagger</span>
+                </div>
+              </div>
+
+              <div class="skill-group">
+                <div class="skill-group__icon">
+                  <i class="fas fa-palette" aria-hidden="true"></i>
+                </div>
+                <div class="skill-group__title">Design &amp; Other</div>
+                <div class="skill-pills">
+                  <span class="skill-pill featured">UI/UX Design</span>
+                  <span class="skill-pill featured">Graphic Design</span>
+                  <span class="skill-pill">Brand Identity</span>
+                  <span class="skill-pill">Technical Writing</span>
+                  <span class="skill-pill">Virtual Assistance</span>
+                  <span class="skill-pill">Recruiting</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-nav" role="group" aria-label="Skills navigation">
+            <button
+              class="carousel-btn"
+              id="skillsPrev"
+              aria-label="Previous skills"
+              disabled
+            >
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <div class="carousel-dots" id="skillsDots" role="tablist"></div>
+            <button
+              class="carousel-btn"
+              id="skillsNext"
+              aria-label="Next skills"
+            >
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  PROJECTS CAROUSEL  -->
+    <section class="section" id="projects" aria-label="Projects">
+      <div class="container">
+        <div class="projects__header">
+          <div>
+            <div class="section-label">Projects</div>
+            <h2 class="section-title">Things I've Built</h2>
+          </div>
+          <div
+            class="project-filters"
+            role="group"
+            aria-label="Filter projects"
+          >
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="fullstack">
+              Full-Stack
+            </button>
+            <button class="filter-btn" data-filter="frontend">Frontend</button>
+            <button class="filter-btn" data-filter="saas">SaaS</button>
+            <button class="filter-btn" data-filter="other">Other</button>
+          </div>
+        </div>
+
+        <div class="carousel-wrapper">
+          <div class="carousel-track-outer">
+            <div class="carousel-track" id="projectsTrack">
+              <!-- PROJECT 1 — EventPro (featured accent glow) -->
+              <article
+                class="project-card reveal"
+                data-category="fullstack saas"
+              >
+                <div class="project-card__visual" style="background: #080810">
+                  <!-- SWAP for real screenshot: -->
+                  <img
+                    class="mockup-screenshot"
+                    src="assets/images/event.png"
+                    alt="EventPro on multiple devices"
+                    loading="lazy"
+                  />
+                  <div class="project-card__badge">Featured</div>
+                </div>
+
+                <div class="project-card__content">
+                  <div class="project-card__category">Full-Stack · SaaS</div>
+                  <h3 class="project-card__title">
+                    EventPro — Event Management Platform
+                  </h3>
+                  <p class="project-card__desc">
+                    Multi-role SaaS with Admin, Organizer and Attendee
+                    dashboards. Real-time check-in, CSV import, JWT auth,
+                    Appwrite SMS/email, live PostgreSQL backend.
+                  </p>
+                  <div class="project-card__stack">
+                    <span class="stack-tag">HTML5</span
+                    ><span class="stack-tag">CSS3</span>
+                    <span class="stack-tag">Vanilla JS</span
+                    ><span class="stack-tag">Node.js</span>
+                    <span class="stack-tag">PostgreSQL</span
+                    ><span class="stack-tag">Appwrite</span>
+                  </div>
+                  <div class="project-card__links">
+                    <a
+                      href="https://tonythedev01.github.io/EventPro-Frontend/"
+                      target="_blank"
+                      rel="noopener"
+                      class="project-link primary"
+                      ><i class="fas fa-external-link-alt"></i> Live Demo</a
+                    >
+                    <a
+                      href="https://github.com/TonytheDev01/EventPro-Frontend"
+                      target="_blank"
+                      rel="noopener"
+                      class="project-link"
+                      ><i class="fab fa-github"></i> GitHub</a
+                    >
+                  </div>
+                </div>
+              </article>
+
+              <!-- PROJECT 2 — FreshBasket -->
+              <article
+                class="project-card reveal reveal-delay-1"
+                data-category="frontend"
+              >
+                <div class="project-card__visual" style="background: #080810">
+                  <img
+                    class="mockup-screenshot"
+                    src="assets/images/fresh.png"
+                    alt="Fresh-market on multiple devices"
+                    loading="lazy"
+                  />
+                  <div class="project-card__badge">E-Commerce</div>
+                </div>
+
+                <div class="project-card__content">
+                  <div class="project-card__category">
+                    Frontend · E-Commerce
+                  </div>
+                  <h3 class="project-card__title">FreshBasket Market</h3>
+                  <p class="project-card__desc">
+                    Full grocery delivery UI for the Nigerian market. Dynamic
+                    product grid, auth modal, coverage checker, cart and
+                    newsletter — vanilla JS throughout.
+                  </p>
+                  <div class="project-card__stack">
+                    <span class="stack-tag">HTML5</span
+                    ><span class="stack-tag">CSS3</span
+                    ><span class="stack-tag">Vanilla JS</span
+                    ><span class="stack-tag">Responsive</span>
+                  </div>
+                  <div class="project-card__links">
+                    <a
+                      href="https://tonyfresh-market.netlify.app/"
+                      target="_blank"
+                      rel="noopener"
+                      class="project-link primary"
+                      ><i class="fas fa-external-link-alt"></i> Live Demo</a
+                    >
+                    <a
+                      href="https://github.com/TonytheDev01/Fresh-market"
+                      target="_blank"
+                      rel="noopener"
+                      class="project-link"
+                      ><i class="fab fa-github"></i> GitHub</a
+                    >
+                  </div>
+                </div>
+              </article>
+
+              <!-- PROJECT 3 — Hybrid Academy -->
+              <article
+                class="project-card reveal reveal-delay-2"
+                data-category="frontend"
+              >
+                <div class="project-card__visual" style="background: #080810">
+                  <img
+                    class="mockup-screenshot"
+                    src="assets/images/restuarant.png"
+                    alt="Fresh-market on multiple devices"
+                    loading="lazy"
+                  />
+                  <div class="project-card__badge">Client</div>
+                </div>
+
+                <div class="project-card__content">
+                  <div class="project-card__category">
+                    Frontend · Client Work
+                  </div>
+                  <h3 class="project-card__title">Hybrid Academy Surulere</h3>
+                  <p class="project-card__desc">
+                    Live website for a real client — Hybrid Academy in Surulere,
+                    Lagos. Clean, responsive, optimised for prospective students
+                    and parents.
+                  </p>
+                  <div class="project-card__stack">
+                    <span class="stack-tag">HTML5</span
+                    ><span class="stack-tag">CSS3</span
+                    ><span class="stack-tag">JavaScript</span>
+                  </div>
+                  <div class="project-card__links">
+                    <a href="#" class="project-link primary"
+                      ><i class="fas fa-external-link-alt"></i> Live Demo</a
+                    >
+                  </div>
+                </div>
+              </article>
+
+              <!-- project 4 -->
+              <article
+                class="project-card reveal reveal-delay-2"
+                data-category="frontend"
+              >
+                <div class="project-card__visual" style="background: #080810">
+                  <img
+                    class="mockup-screenshot"
+                    src="assets/images/restuarant.png"
+                    alt="Fresh-market on multiple devices"
+                    loading="lazy"
+                  />
+                  <div class="project-card__badge">Client</div>
+                </div>
+
+                <div class="project-card__content">
+                  <div class="project-card__category">
+                    Frontend · Client Work
+                  </div>
+                  <h3 class="project-card__title">Hybrid Academy Surulere</h3>
+                  <p class="project-card__desc">
+                    Live website for a real client — Hybrid Academy in Surulere,
+                    Lagos. Clean, responsive, optimised for prospective students
+                    and parents.
+                  </p>
+                  <div class="project-card__stack">
+                    <span class="stack-tag">HTML5</span
+                    ><span class="stack-tag">CSS3</span
+                    ><span class="stack-tag">JavaScript</span>
+                  </div>
+                  <div class="project-card__links">
+                    <a href="#" class="project-link primary"
+                      ><i class="fas fa-external-link-alt"></i> Live Demo</a
+                    >
+                  </div>
+                </div>
+              </article>
+
+              <!-- PROJECT 5 — Idea-Engne -->
+              <article class="project-card reveal" data-category="saas">
+                <div class="project-card__visual" style="background: #080810">
+                  <img
+                    class="mockup-screenshot"
+                    src="assets/images/fresh.png"
+                    alt="Fresh-market on multiple devices"
+                    loading="lazy"
+                  />
+                  <div class="project-card__badge">Client</div>
+                </div>
+
+                <div class="project-card__content">
+                  <div class="project-card__category">SaaS · AI</div>
+                  <h3 class="project-card__title">Idea-Engne</h3>
+                  <p class="project-card__desc">
+                    AI-powered idea generation and validation SaaS. Helps
+                    entrepreneurs go from spark to structured concept.
+                    Subscription model — payments in progress.
+                  </p>
+                  <div class="project-card__stack">
+                    <span class="stack-tag">HTML5</span
+                    ><span class="stack-tag">CSS3</span
+                    ><span class="stack-tag">JavaScript</span
+                    ><span class="stack-tag">AI API</span>
+                  </div>
+                  <div class="project-card__links">
+                    <span
+                      class="project-link"
+                      style="opacity: 0.5; cursor: default"
+                      ><i class="fas fa-clock"></i> Launching Soon</span
+                    >
+                  </div>
+                </div>
+              </article>
+
+              <!-- PROJECT 6 — HTML From Zero -->
+              <article
+                class="project-card reveal reveal-delay-1"
+                data-category="other"
+              >
+                <div class="project-card__visual" style="background: #080810">
+                  <img
+                    class="mockup-screenshot"
+                    src="assets/images/restuarant.png"
+                    alt="Fresh-market on multiple devices"
+                    loading="lazy"
+                  />
+                  <div class="project-card__badge">Client</div>
+                </div>
+
+                <div class="project-card__content">
+                  <div class="project-card__category">
+                    Technical Writing · Ebook
+                  </div>
+                  <h3 class="project-card__title">HTML From Zero — Vol.1</h3>
+                  <p class="project-card__desc">
+                    A beginner's ebook teaching HTML from the ground up — for
+                    people who want to understand fundamentals before CSS and
+                    JavaScript.
+                  </p>
+                  <div class="project-card__stack">
+                    <span class="stack-tag">Technical Writing</span
+                    ><span class="stack-tag">HTML5</span
+                    ><span class="stack-tag">Education</span>
+                  </div>
+                  <div class="project-card__links">
+                    <a href="#contact" class="project-link primary"
+                      ><i class="fas fa-shopping-cart"></i> Get the Book</a
+                    >
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div
+            class="carousel-nav"
+            role="group"
+            aria-label="Projects navigation"
+          >
+            <button
+              class="carousel-btn"
+              id="projectsPrev"
+              aria-label="Previous projects"
+              disabled
+            >
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <div class="carousel-dots" id="projectsDots" role="tablist"></div>
+            <button
+              class="carousel-btn"
+              id="projectsNext"
+              aria-label="Next projects"
+            >
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  SERVICES  -->
+    <section class="section services" id="services" aria-label="Services">
+      <div class="container">
+        <div class="section-label">Services</div>
+        <h2 class="section-title">What I Can Do For You</h2>
+        <p class="section-sub">
+          From a landing page to a full SaaS platform — I can help at every
+          stage.
+        </p>
+
+        <div class="services__grid">
+          <div class="service-card reveal">
+            <div class="service-card__num">01</div>
+            <div class="service-card__icon">
+              <i class="fas fa-laptop-code" aria-hidden="true"></i>
+            </div>
+            <h3 class="service-card__title">Web Development</h3>
+            <p class="service-card__desc">
+              Responsive, fast, and accessible websites using HTML, CSS, and
+              JavaScript. From landing pages to full multi-page applications
+              built to convert.
+            </p>
+          </div>
+          <div class="service-card reveal reveal-delay-1">
+            <div class="service-card__num">02</div>
+            <div class="service-card__icon">
+              <i class="fas fa-layer-group" aria-hidden="true"></i>
+            </div>
+            <h3 class="service-card__title">Full-Stack Applications</h3>
+            <p class="service-card__desc">
+              End-to-end apps with Node.js backends, PostgreSQL databases, REST
+              APIs, and auth systems. Deployed and production-ready.
+            </p>
+          </div>
+          <div class="service-card reveal reveal-delay-2">
+            <div class="service-card__num">03</div>
+            <div class="service-card__icon">
+              <i class="fas fa-paint-brush" aria-hidden="true"></i>
+            </div>
+            <h3 class="service-card__title">UI/UX Design</h3>
+            <p class="service-card__desc">
+              Clean, modern interfaces designed with the user in mind. Component
+              design, design systems, and brand identity — not just code.
+            </p>
+          </div>
+          <div class="service-card reveal reveal-delay-3">
+            <div class="service-card__num">04</div>
+            <div class="service-card__icon">
+              <i class="fas fa-robot" aria-hidden="true"></i>
+            </div>
+            <h3 class="service-card__title">SaaS Product Development</h3>
+            <p class="service-card__desc">
+              Help building your SaaS idea from concept to launch. Auth,
+              dashboards, subscription logic, and all the infrastructure that
+              makes a product real.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  CONTACT  -->
+    <section class="section" id="contact" aria-label="Contact">
+      <div class="container">
+        <div class="contact__grid">
+          <div>
+            <div class="section-label">Contact</div>
+            <h2 class="contact__info-title">
+              Let's Build Something<br />
+              Great Together.
+            </h2>
+            <p class="contact__info-desc">
+              Have a project in mind? Looking to hire? My inbox is always open
+              I'll get back to you within 30 minutes.
+            </p>
+            <div class="contact__items">
+              <div class="contact__item">
+                <div class="contact__item-icon">
+                  <i class="fas fa-envelope" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <div class="contact__item-label">Email</div>
+                  <div class="contact__item-value">
+                    tonydevcreation@mail.com
+                  </div>
+                </div>
+              </div>
+              <div class="contact__item">
+                <div class="contact__item-icon">
+                  <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <div class="contact__item-label">LinkedIn</div>
+                  <div class="contact__item-value">anthony-chuksmichael</div>
+                </div>
+              </div>
+              <div class="contact__item">
+                <div class="contact__item-icon">
+                  <i class="fab fa-github" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <div class="contact__item-label">GitHub</div>
+                  <div class="contact__item-value">TonytheDev01</div>
+                </div>
+              </div>
+            </div>
+            <div class="hero__social">
+              <a
+                href="https://github.com/TonytheDev01"
+                target="_blank"
+                rel="noopener"
+                class="social-link"
+                aria-label="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/anthony-chuksmichael/"
+                target="_blank"
+                rel="noopener"
+                class="social-link"
+                aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a
+                href="https://x.com/Tonymichuks"
+                target="_blank"
+                rel="noopener"
+                class="social-link"
+                aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="contact__form reveal">
+            <form id="contactForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="contactName">Name</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="contactName"
+                    name="name"
+                    placeholder="John Doe"
+                    required
+                    autocomplete="name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contactEmail">Email</label>
+                  <input
+                    class="form-input"
+                    type="email"
+                    id="contactEmail"
+                    name="email"
+                    placeholder="john@example.com"
+                    required
+                    autocomplete="email"
+                  />
+                </div>
+              </div>
+              <div class="form-group full">
+                <label class="form-label" for="contactSubject">Subject</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="contactSubject"
+                  name="subject"
+                  placeholder="Project enquiry / Hire / Collaboration"
+                />
+              </div>
+              <div class="form-group full">
+                <label class="form-label" for="contactMessage">Message</label>
+                <textarea
+                  class="form-textarea"
+                  id="contactMessage"
+                  name="message"
+                  placeholder="Tell me about your project…"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="form-submit">
+                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  FOOTER -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__inner">
+          <div class="footer__brand">Tony<span>Dev</span></div>
+          <nav aria-label="Footer navigation">
+            <ul class="footer__links">
+              <li><a href="#about" class="footer__link">About</a></li>
+              <li><a href="#projects" class="footer__link">Projects</a></li>
+              <li><a href="#services" class="footer__link">Services</a></li>
+              <li><a href="#contact" class="footer__link">Contact</a></li>
+            </ul>
+          </nav>
+          <div class="footer__social hero__social">
+            <a
+              href="https://github.com/TonytheDev01"
+              target="_blank"
+              rel="noopener"
+              class="social-link"
+              aria-label="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/anthony-chuksmichael/"
+              target="_blank"
+              rel="noopener"
+              class="social-link"
+              aria-label="LinkedIn"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a
+              href="https://x.com/Tonymichuks"
+              target="_blank"
+              rel="noopener"
+              class="social-link"
+              aria-label="Twitter"
+              ><i class="fab fa-twitter"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p class="footer__credit">
+            &copy; 2025 <span>Anthony Michael</span>. Designed &amp; built with
+            obsession.
+          </p>
+          <button
+            class="back-to-top"
+            onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+            aria-label="Back to top"
+          >
+            <i class="fas fa-chevron-up" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <script src="index.js"></script>
+  </body>
+</html>
