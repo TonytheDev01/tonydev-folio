@@ -410,7 +410,7 @@ const form = document.getElementById("contactForm");
 const toast = document.getElementById("toast");
 let toastTimer;
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const name = form.querySelector("#contactName").value.trim();
   const email = form.querySelector("#contactEmail").value.trim();
@@ -421,12 +421,48 @@ form.addEventListener("submit", (e) => {
   submit.disabled = true;
   submit.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending…';
 
-  setTimeout(() => {
+  try {
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        access_key: "be31e38e-c9df-43a6-95c0-70e57ca5e9b4",
+        name: form.querySelector("#contactName").value,
+        email: form.querySelector("#contactEmail").value,
+        subject:
+          form.querySelector("#contactSubject").value ||
+          "New enquiry from portfolio",
+        message: form.querySelector("#contactMessage").value,
+      }),
+    });
+
+    const json = await res.json();
+
+    if (json.success) {
+      submit.disabled = false;
+      submit.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+      form.reset();
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 4000);
+    } else {
+      throw new Error("Submission failed");
+    }
+  } catch {
     submit.disabled = false;
     submit.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-    form.reset();
+    toast.querySelector("span").textContent =
+      "Something went wrong. Please try again.";
+    toast.style.borderColor = "var(--clr-red)";
     toast.classList.add("show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove("show"), 4000);
-  }, 1400);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove("show");
+      toast.querySelector("span").textContent =
+        "Message sent! I'll get back to you soon.";
+      toast.style.borderColor = "";
+    }, 4000);
+  }
 });
