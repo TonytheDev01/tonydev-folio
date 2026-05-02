@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="TonyDev Blog — Anthony Michael writes about building SaaS products, full-stack development, and lessons learned shipping real projects."
+    />
+    <title>Blog — TonyDev</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+    <!-- NAV -->
+    <header class="nav scrolled" id="nav" role="banner">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">
+          <div class="nav__logo-mark" aria-hidden="true">T</div>
+          Tony<span class="nav__logo-dev">Dev</span>
+          <span class="nav__status-dot" id="statusDot"></span>
+        </a>
+        <nav aria-label="Main navigation">
+          <ul class="nav__links">
+            <li><a href="index.html#about" class="nav__link">About</a></li>
+            <li><a href="index.html#skills" class="nav__link">Skills</a></li>
+            <li>
+              <a href="index.html#projects" class="nav__link">Projects</a>
+            </li>
+            <li>
+              <a href="index.html#services" class="nav__link">Services</a>
+            </li>
+            <li><a href="blog.html" class="nav__link active">Blog</a></li>
+            <li><a href="index.html#contact" class="nav__link">Contact</a></li>
+            <li><a href="#book" class="nav__link">Book a Call</a></li>
+          </ul>
+        </nav>
+        <div class="nav__actions">
+          <button class="nav__theme" id="themeToggle" aria-label="Toggle theme">
+            <i class="fas fa-moon" id="themeIcon"></i>
+          </button>
+          <a href="index.html#contact" class="btn-hire">Hire Me</a>
+          <button
+            class="nav__hamburger"
+            id="hamburger"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="nav__mobile" id="mobileNav">
+        <a href="index.html#about" class="nav__link" data-mobile-link>About</a>
+        <a href="index.html#projects" class="nav__link" data-mobile-link
+          >Projects</a
+        >
+        <a href="blog.html" class="nav__link" data-mobile-link>Blog</a>
+        <a href="index.html#contact" class="nav__link" data-mobile-link
+          >Contact</a
+        >
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="blog-hero section">
+      <div class="container blog-hero__container">
+        <div class="section-label">Devlog</div>
+        <h1 class="section-title blog-hero__title">
+          Building in Public.<br />
+          <span class="accent-text">Lessons & War Stories.</span>
+        </h1>
+        <p class="section-sub blog-hero__sub">
+          I write about what I'm building, what broke, what I learned, and what
+          I'd do differently. No fluff just real dev notes.
+        </p>
+      </div>
+    </section>
+
+    <!-- BLOG LISTING -->
+    <section class="section section--no-top-padding">
+      <div class="container">
+        <!-- Featured post -->
+        <a
+          href="blog-eventpro.html"
+          class="blog-card blog-card--featured reveal"
+        >
+          <div class="blog-card__cover blog-card__cover--eventpro">
+            <img
+              src="assets/images/event.png"
+              alt="EventPro - Event Management Platform"
+              class="blog-card__cover-image"
+            />
+            <div class="blog-card__tag blog-card__tag--featured">Featured</div>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta">
+              <span
+                ><i class="fas fa-calendar icon-with-margin"></i>April
+                2026</span
+              >
+              <span>·</span>
+              <span
+                ><i class="fas fa-clock icon-with-margin"></i>12 min read</span
+              >
+            </div>
+            <div class="blog-card__title">
+              How I Built EventPro: A Full-Stack SaaS Event Management Platform
+              From Scratch
+            </div>
+            <p class="blog-card__excerpt">
+              From a blank editor to a live multi-role SaaS platform with
+              real-time attendance, CSV uploads, JWT auth, and a PostgreSQL
+              backend — here's everything I built, every decision I made, and
+              every mistake I fixed along the way.
+            </p>
+            <div class="blog-card__read">
+              Read the full story <i class="fas fa-arrow-right"></i>
+            </div>
+          </div>
+        </a>
+
+        <div class="blog-grid">
+          <!-- Post 2 — Coming soon placeholder -->
+          <div class="blog-card blog-card--disabled">
+            <div class="blog-card__cover blog-card__cover--fresh">
+              🛒
+              <div class="blog-card__tag blog-card__tag--disabled">
+                Coming Soon
+              </div>
+            </div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta"><span>Coming soon</span></div>
+              <div class="blog-card__title">
+                Building FreshBasket: What I Learned About Nigerian UX
+              </div>
+              <p class="blog-card__excerpt">
+                Designing a grocery delivery app for Nigerian users taught me
+                things no design course covers — naira pricing, network
+                constraints, and trust signals that actually work.
+              </p>
+              <div class="blog-card__read blog-card__read--disabled">
+                Coming soon
+              </div>
+            </div>
+          </div>
+
+          <!-- Post 3 — Coming soon -->
+          <div class="blog-card blog-card--disabled">
+            <div class="blog-card__cover blog-card__cover--idea">
+              🤖
+              <div class="blog-card__tag blog-card__tag--disabled">
+                Coming Soon
+              </div>
+            </div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta"><span>Coming soon</span></div>
+              <div class="blog-card__title">
+                Why I'm Building Idea-Engne and What Makes AI SaaS Hard
+              </div>
+              <p class="blog-card__excerpt">
+                Everyone wants to build an AI product. Here's what nobody tells
+                you about the payment integration, user trust, and keeping costs
+                from eating your margins alive.
+              </p>
+              <div class="blog-card__read blog-card__read--disabled">
+                Coming soon
+              </div>
+            </div>
+          </div>
+
+          <!-- Post 4 — Coming soon -->
+          <div class="blog-card blog-card--disabled">
+            <div class="blog-card__cover blog-card__cover--ebook">
+              📖
+              <div class="blog-card__tag blog-card__tag--disabled">
+                Coming Soon
+              </div>
+            </div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta"><span>Coming soon</span></div>
+              <div class="blog-card__title">
+                I Wrote a Dev Ebook as a Self-Taught Developer. Here's What
+                Happened.
+              </div>
+              <p class="blog-card__excerpt">
+                Publishing HTML From Zero Vol.1 taught me more about teaching
+                than it did about HTML. Here's the process, the reception, and
+                what Vol.2 looks like.
+              </p>
+              <div class="blog-card__read blog-card__read--disabled">
+                Coming soon
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__inner">
+          <div class="footer__brand">Tony<span>Dev</span></div>
+          <div class="footer__social hero__social">
+            <a
+              href="https://github.com/TonytheDev01"
+              target="_blank"
+              rel="noopener"
+              class="social-link"
+              aria-label="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/anthony-chuksmichael/"
+              target="_blank"
+              rel="noopener"
+              class="social-link"
+              aria-label="LinkedIn"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a
+              href="https://x.com/Tonymichuks"
+              target="_blank"
+              rel="noopener"
+              class="social-link"
+              aria-label="Twitter"
+              ><i class="fab fa-x-twitter"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p class="footer__credit">
+            &copy; 2025 <span>Anthony Michael</span>. Built with obsession.
+          </p>
+          <a
+            href="index.html"
+            class="back-to-top"
+            aria-label="Back to portfolio"
+          >
+            <i class="fas fa-house"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="index.js"></script>
+  </body>
+</html>

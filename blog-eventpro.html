@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="How Anthony Michael built EventPro — a full-stack SaaS event management platform with multi-role auth, real-time attendance, and a Node.js PostgreSQL backend."
+    />
+    <title>How I Built EventPro — TonyDev Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+    <!-- NAV -->
+    <header class="nav scrolled" id="nav" role="banner">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">
+          <div class="nav__logo-mark" aria-hidden="true">T</div>
+          Tony<span class="nav__logo-dev">Dev</span>
+          <span class="nav__status-dot" id="statusDot"></span>
+        </a>
+        <nav aria-label="Main navigation">
+          <ul class="nav__links">
+            <li><a href="index.html#about" class="nav__link">About</a></li>
+            <li>
+              <a href="index.html#projects" class="nav__link">Projects</a>
+            </li>
+            <li><a href="blog.html" class="nav__link active">Blog</a></li>
+            <li><a href="index.html#contact" class="nav__link">Contact</a></li>
+            <li><a href="#book" class="nav__link">Book a Call</a></li>
+          </ul>
+        </nav>
+        <div class="nav__actions">
+          <button class="nav__theme" id="themeToggle" aria-label="Toggle theme">
+            <i class="fas fa-moon" id="themeIcon"></i>
+          </button>
+          <a href="index.html#contact" class="btn-hire">Hire Me</a>
+          <button
+            class="nav__hamburger"
+            id="hamburger"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="nav__mobile" id="mobileNav">
+        <a href="index.html" class="nav__link" data-mobile-link>Home</a>
+        <a href="blog.html" class="nav__link" data-mobile-link>Blog</a>
+        <a href="index.html#contact" class="nav__link" data-mobile-link
+          >Contact</a
+        >
+      </div>
+    </header>
+
+    <!-- POST HERO -->
+    <section class="post-hero">
+      <div
+        class="post-hero__bg post-hero__bg--eventpro"
+      ></div>
+      <div class="post-hero__overlay"></div>
+      <div class="container post-hero__content">
+        <div class="post-meta">
+          <span class="post-tag">Case Study</span>
+          <span
+            class="post-tag post-tag--secondary"
+            >Full-Stack</span
+          >
+          <span class="post-date"
+            ><i class="fas fa-calendar icon-with-margin"></i>April
+            2026</span
+          >
+          <span class="post-read-time"
+            ><i class="fas fa-clock icon-with-margin"></i>12 min
+            read</span
+          >
+        </div>
+        <h1 class="post-title">
+          How I Built EventPro: A Full-Stack SaaS Event Management Platform From
+          Scratch
+        </h1>
+        <p class="post-subtitle">
+          From a blank editor to a live multi-role SaaS platform with real-time
+          attendance, CSV uploads, JWT auth, and a PostgreSQL backend — the full
+          story.
+        </p>
+      </div>
+    </section>
+
+    <!-- POST BODY -->
+    <article class="post-body">
+      <div class="post-author">
+        <div class="post-author-avatar">T</div>
+        <div>
+          <div class="post-author-name">Anthony Michael (TonyDev)</div>
+          <div class="post-author-role">Full-Stack Developer · Nigeria 🇳🇬</div>
+        </div>
+      </div>
+
+      <hr class="post-divider" />
+
+      <h2>The Problem That Started It All</h2>
+
+      <p>
+        Event management in Nigeria and honestly across much of Africa, is still
+        largely manual. Organizers uses spreadsheet, WhatsApp groups to confirm
+        attendees. Check-in is done with printed lists and pens. Duplicate
+        registrations go undetected until someone shows up claiming a seat that
+        was already taken.Long queues of attendees in hot weather. Attendance
+        data lives in Excel files that get emailed around after the event, if at
+        all.
+      </p>
+
+      <p>
+        EventPro was built to solve exactly this problems. The goal was a single
+        platform where an admin could manage organizers, organizers could manage
+        their events, and attendees could register for events seemlessly, get confirmed, and check in with ease without long standing,
+        — all without a single WhatsApp message or printed list.
+      </p>
+
+      <div class="post-callout">
+        <p>
+          <i class="fas fa-lightbulb"></i
+          ><strong>The core question:</strong> Can a self-taught developer with
+          no team build a production-grade, multi-role SaaS platform entirely in
+          vanilla JavaScript and Node.js?
+        </p>
+      </div>
+
+      <p>
+        Spoiler: yes. But it took longer, broke more, and taught me more than
+        any course or tutorial ever has. This is that story.
+      </p>
+
+      <h2>Deciding the Architecture Before Writing a Line</h2>
+
+      <p>
+        The first week was entirely planning. No code. Just a lot of diagrams,
+        questions, and second-guessing.
+      </p>
+
+      <p>
+        The three-role system —
+        <strong>Admin, Organizer, and Attendee</strong> was the foundational
+        decision that shaped everything else. Each role needed:
+      </p>
+
+      <ul>
+        <li>
+          Its own separate dashboard with different navigation, data, and
+          permissions
+        </li>
+        <li>
+          Role-based API access — an organizer should never touch admin data
+        </li>
+        <li>
+          A shared auth system that routes users to the right dashboard after
+          login
+        </li>
+      </ul>
+
+      <p>
+        I debated using a framework. React would have made the component reuse
+        cleaner. Next.js would have given me routing for free. I chose neither.
+        The reason was deliberate: I wanted to prove to myself and to anyone
+        looking at my portfolio, that I could build something production-grade
+        without leaning on a framework as a crutch. Vanilla HTML, CSS, and
+        JavaScript for the frontend. Node.js and Express for the backend.
+        PostgreSQL for the database.
+      </p>
+
+      <h3>The file structure decision</h3>
+
+      <p>
+        With 20+ screens across three roles, the file structure had to be
+        planned carefully or it would become a nightmare. I landed on this:
+      </p>
+
+      <pre><code>EventPro/
+EventPro-Frontend/
+├── assets/
+│   └── images/              — logos, illustrations, icons
+├── js/
+│   ├── services/
+│   │   └── auth-service.js  — login, logout, token storage, profile fetch
+│   ├── utils/
+│   │   └── load-components.js — role-aware sidebar + topbar injection
+│   ├── admin-dashboard.js
+│   ├── admin-events.js
+│   ├── admin-login.js
+│   ├── admin-report.js
+│   ├── attendees.js
+│   ├── create-event.js
+│   ├── csv-validation.js
+│   ├── duplicate-detection.js
+│   ├── forgot-password.js
+│   ├── organizer-dashboard.js
+│   ├── organizer-events.js
+│   ├── organizer-management.js
+│   ├── organizer-report.js
+│   ├── real-time-attendance.js
+│   ├── role-selection.js
+│   ├── settings.js
+│   ├── sign-in.js
+│   ├── signup.js
+│   ├── ticket-details.js
+│   └── upload.js
+├── pages/
+│   ├── admin-dashboard.html
+│   ├── admin-events.html
+│   ├── admin-login.html        — private URL, not linked publicly
+│   ├── admin-report.html
+│   ├── attendees.html
+│   ├── auth-reset-password.html
+│   ├── create-event.html
+│   ├── csv-validation.html
+│   ├── duplicate-detection.html
+│   ├── forget-password.html
+│   ├── organizer-accounts.html
+│   ├── organizer-dashboard.html
+│   ├── organizer-events.html
+│   ├── organizer-management.html
+│   ├── organizer-reports.html
+│   ├── real-time-attendance.html
+│   ├── role-selection.html
+│   ├── settings.html
+│   ├── sign-in.html
+│   ├── signup.html
+│   ├── sms-verification.html
+│   ├── ticket-details.html
+│   └── upload.html
+├── styles/
+│   ├── dashboard-layout.css   — shared sidebar + topbar shell
+│   ├── admin-events.css
+│   ├── attendees.css
+│   ├── csv-validation.css
+│   ├── organizer-events.css
+│   ├── real-time-attendance.css
+│   ├── settings.css
+│   ├── sign-in.css
+│   ├── signup.css
+│   ├── upload.css
+│   └── ...
+└── README.md
+      <p>
+        The key insight was <code>auth-service.js</code> — a single file that
+        owns every API call in the entire frontend. No page ever calls
+        <code>fetch()</code> directly. This meant when the backend URL changed
+        (it did, twice), I updated one file.
+      </p>
+
+      <h2>Building the Backend First</h2>
+
+      <p>
+        This was the decision I'm most proud of. Most frontend developers build
+        the UI first and bolt on the backend later. I did the opposite. The
+        backend was entirely built and tested in Postman before a single
+        dashboard HTML file existed.
+      </p>
+
+      <p>
+        The backend runs on <strong>Node.js + Express</strong>, hosted on
+        Render's free tier, with a <strong>PostgreSQL</strong> database. The API
+        has Swagger documentation — not because I had to, but because I'd seen
+        enough professional APIs to know that undocumented endpoints are a
+        collaboration nightmare.
+      </p>
+
+      <h3>The auth system</h3>
+
+      <p>
+        All three roles — Admin, Organizer, Attendee — share the same login
+        endpoint. The backend returns a JWT that contains the user's role. The
+        frontend reads that role and redirects accordingly. Simple in principle.
+        Surprisingly easy to get wrong in practice.
+      </p>
+
+      <p>
+        The first version had a bug where an organizer could modify the role in
+        their JWT and gain admin access. The fix was server-side role validation
+        on every protected route — never trusting what the client sends.
+      </p>
+
+      <div class="post-callout">
+        <p>
+          <i class="fas fa-shield-alt"></i
+          ><strong>Security lesson:</strong> Never trust the client. Always
+          validate role and permissions server-side on every single API call,
+          not just on login.
+        </p>
+      </div>
+
+      <h3>Social login via Appwrite</h3>
+
+      <p>
+        SMS and email verification were integrated through
+        <strong>Appwrite</strong> — a backend-as-a-service that handles OTP
+        delivery reliably. This was a deliberate choice over building a custom
+        verification system. Building OTP delivery from scratch means managing
+        email deliverability, SMS gateway integrations, and rate limiting.
+        Appwrite handles all of that. Good engineers know when not to reinvent
+        the wheel.
+      </p>
+
+      <h2>The Features That Were Hard to Build</h2>
+
+      <h3>Real-time attendance tracking</h3>
+
+      <p>
+        This was the feature I was most nervous about. Real-time means the
+        dashboard updates live as attendees check in — no page refresh required.
+      </p>
+
+      <p>
+        The implementation uses <strong>polling</strong> rather than WebSockets.
+        Every 10 seconds, the attendance dashboard silently fetches the latest
+        check-in data and updates the UI if anything changed. It's not as
+        elegant as a persistent WebSocket connection, but it's significantly
+        simpler to deploy on a free-tier server and handles the scale of events
+        this platform targets (tens to hundreds of attendees, not thousands).
+      </p>
+
+      <p>
+        The result: organizers see a live counter and attendee list that updates
+        in near-real-time without ever touching a refresh button.
+      </p>
+
+      <h3>CSV upload with duplicate detection</h3>
+
+      <p>
+        Bulk importing attendees sounds simple. It isn't. The requirements were:
+      </p>
+
+      <ul>
+        <li>Accept a CSV file with arbitrary column names</li>
+        <li>Map the columns to the expected fields (name, email, phone)</li>
+        <li>Detect and flag duplicates before they hit the database</li>
+        <li>Give the organizer a clear error report for every invalid row</li>
+        <li>Import valid rows without stopping for the invalid ones</li>
+      </ul>
+
+      <p>
+        The duplicate detection runs at two levels: within the uploaded file
+        itself (someone adding the same email twice in the spreadsheet) and
+        against existing attendees in the database for that event. The frontend
+        shows a summary "47 imported successfully, 3 duplicates skipped, 1
+        invalid email format"  before anything is committed.
+      </p>
+
+      <h3>The deactivation modal</h3>
+
+      <p>
+        A small feature that took disproportionate thought: when an admin
+        deactivates an organizer, what happens to their active events? The
+        decision was to cascade — events remain published and accessible to
+        attendees, but the organizer loses dashboard access until reactivated.
+        The data doesn't disappear. This matters because real events have real
+        attendees who bought tickets or made plans.
+      </p>
+
+      <h2>The Frontend — 20+ Screens in Vanilla JS</h2>
+
+      <p>
+        Building 20+ screens without a component framework means solving the
+        shared UI problem manually. The navigation sidebar appears on every
+        dashboard screen. In React, you'd use a layout component. In vanilla JS,
+        I built
+        <code>load-components.js</code> — a utility that fetches shared HTML
+        fragments and injects them into a designated placeholder on each page.
+      </p>
+
+      <p>
+        The CSS architecture was equally deliberate.
+        <code>dashboard-layout.css</code>
+        defines every design token, shared component (cards, tables, badges,
+        modals, toasts), and responsive breakpoints. Each page imports it first,
+        then adds only its own page-specific styles. This means a button looks
+        identical on the admin dashboard and the organizer events page — because
+        they're literally the same CSS class.
+      </p>
+
+      <h3>The design system</h3>
+
+      <p>
+        The purple sidebar (<code>#6F00FF</code>) was chosen intentionally.
+        Purple signals premium, authority, and trust — the qualities an admin
+        dashboard should convey. The white active state on the sidebar link
+        creates a strong visual anchor that tells users exactly where they are
+        at all times.
+      </p>
+
+      <h2>Deployment and What Broke</h2>
+
+      <p>
+        The backend is deployed on <strong>Render's free tier</strong>. This
+        comes with one significant caveat: the server spins down after 15
+        minutes of inactivity. The first request after sleep takes 30–60
+        seconds. This is why the auth service has a built-in timeout message 
+        "The server may be starting up — please try again" — rather than a
+        generic error.
+      </p>
+
+      <p>
+        The frontend is deployed on <strong>GitHub Pages</strong> with a custom
+        landing page added later. The deployment issue that cost me an
+        afternoon: GitHub Pages is case-sensitive. <code>Sign-In.html</code> and
+        <code>sign-in.html</code> are different files on Linux but identical on
+        Windows. Every internal link had to be audited and corrected.
+      </p>
+
+      <div class="post-callout">
+        <p>
+          <i class="fas fa-exclamation-triangle"></i
+          ><strong>Deployment trap:</strong> Always develop on a case-sensitive
+          file system or explicitly lower-case every filename and every link
+          before deploying to Linux-based hosting.
+        </p>
+      </div>
+
+      <h2>What I'd Do Differently</h2>
+
+      <p>Honest retrospective — three things I'd change if I started today:</p>
+
+      <p>
+        <strong>1. Use a module bundler from day one.</strong> With 30+
+        JavaScript files and no bundler, managing load order and avoiding global
+        scope pollution became a real problem by the end. Vite would have added
+        minimal overhead and solved this completely.
+      </p>
+
+      <p>
+        <strong>2. Write the database schema before the API.</strong> I wrote
+        the Express routes first and designed the PostgreSQL schema to fit them.
+        That's backwards. The data model should drive the API design, not the
+        other way around. I refactored two tables mid-build because of this.
+      </p>
+
+      <p>
+        <strong>3. Plan the mobile layout before building desktop.</strong> The
+        dashboard was designed desktop-first and mobile was retrofitted. It
+        works, but the mobile experience on the organizer management screen is
+        noticeably tighter than it should be. Mobile-first from the start would
+        have caught this.
+      </p>
+
+      <h2>What I'm Proud Of</h2>
+
+      <p>
+        Despite those lessons, EventPro is the project I'm most proud of in my
+        portfolio. Not because it's perfect — it isn't — but because it's real.
+        Real users have logged in. Real events have been created. Real check-ins
+        have happened.
+      </p>
+
+      <p>
+        The admin dashboard currently shows 17 published events and 83
+        registered users. Those aren't placeholder numbers. Those are actual
+        people who used something I built from nothing.
+      </p>
+
+      <p>
+        For a self-taught developer who started with HTML, building a platform
+        with multi-role JWT authentication, real-time data, CSV processing, and
+        a live PostgreSQL backend — that's the proof of concept I needed to
+        prove to myself that I can build anything.
+      </p>
+
+      <h2>What's Next for EventPro</h2>
+
+      <p>
+        The immediate roadmap has three priorities: payment integration for
+        ticket sales, a mobile-responsive organizer dashboard, and moving off
+        Render's free tier to eliminate the cold start delay. Beyond that, QR
+        code check-in generation is planned — instead of manual entry, attendees
+        get a unique QR code in their confirmation email that the organizer
+        scans at the door.
+      </p>
+
+      <p>
+        The codebase is open source. If you're a developer learning Node.js or
+        building your own SaaS, the source is on GitHub and the Swagger docs are
+        live — dig in, borrow what's useful, and open an issue if you spot
+        something broken.
+      </p>
+
+      <hr class="post-divider" />
+
+      <div class="post-footer">
+        <div class="post-author">
+          <div class="post-author-avatar">T</div>
+          <div>
+            <div class="post-author-name">Anthony Michael</div>
+            <div class="post-author-role">
+              Full-Stack Developer · Building in public from Nigeria 🇳🇬
+            </div>
+          </div>
+        </div>
+
+        <div class="post-cta-box">
+          <h3>Want to build something together?</h3>
+          <p>
+            I'm available for freelance projects, contract work, and full-time
+            roles. If you have an idea that needs a builder, let's talk.
+          </p>
+          <div class="cta-buttons-group"
+          >
+            <a href="index.html#contact" class="btn-primary">
+              <i class="fas fa-envelope"></i> Get In Touch
+            </a>
+            <a
+              href="https://tonythedev01.github.io/EventPro-Frontend/"
+              target="_blank"
+              rel="noopener"
+              class="btn-outline"
+            >
+              <i class="fas fa-external-link-alt"></i> View EventPro Live
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__inner">
+          <div class="footer__brand">Tony<span>Dev</span></div>
+          <nav>
+            <ul class="footer__links">
+              <li><a href="index.html" class="footer__link">Portfolio</a></li>
+              <li><a href="blog.html" class="footer__link">Blog</a></li>
+              <li>
+                <a href="index.html#contact" class="footer__link">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="footer__social hero__social">
+            <a
+              href="https://github.com/TonytheDev01"
+              target="_blank"
+              rel="noopener"
+              class="social-link"
+              aria-label="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/anthony-chuksmichael/"
+              target="_blank"
+              rel="noopener"
+              class="social-link"
+              aria-label="LinkedIn"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a
+              href="https://x.com/Tonymichuks"
+              target="_blank"
+              rel="noopener"
+              class="social-link"
+              aria-label="Twitter"
+              ><i class="fab fa-x-twitter"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p class="footer__credit">
+            &copy; 2025 <span>Anthony Michael</span>. Built with obsession.
+          </p>
+          <a href="blog.html" class="back-to-top" aria-label="Back to blog">
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="index.js"></script>
+  </body>
+</html>

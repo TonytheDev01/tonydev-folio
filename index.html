@@ -44,6 +44,11 @@
         <a href="#hero" class="nav__logo" aria-label="TonyDev — Home">
           <div class="nav__logo-mark" aria-hidden="true">T</div>
           Tony<span class="nav__logo-dev">Dev</span>
+          <span
+            class="nav__status-dot"
+            id="statusDot"
+            aria-label="Available for work"
+          ></span>
         </a>
 
         <nav aria-label="Main navigation">
@@ -52,7 +57,9 @@
             <li><a href="#skills" class="nav__link">Skills</a></li>
             <li><a href="#projects" class="nav__link">Projects</a></li>
             <li><a href="#services" class="nav__link">Services</a></li>
+            <li><a href="#book" class="nav__link">Book a Call</a></li>
             <li><a href="#contact" class="nav__link">Contact</a></li>
+            <li><a href="blog.html" class="nav__link">Blog</a></li>
           </ul>
         </nav>
 
@@ -87,12 +94,7 @@
         <a href="#projects" class="nav__link" data-mobile-link>Projects</a>
         <a href="#services" class="nav__link" data-mobile-link>Services</a>
         <a href="#contact" class="nav__link" data-mobile-link>Contact</a>
-        <a
-          href="#contact"
-          class="btn-hire"
-          data-mobile-link
-          >Hire Me</a
-        >
+        <a href="#contact" class="btn-hire" data-mobile-link>Hire Me</a>
       </div>
     </header>
 
@@ -105,9 +107,13 @@
         <div class="hero__layout">
           <!-- LEFT  -->
           <div class="hero__left">
-            <div class="hero__available" role="status">
-              <div class="hero__available-dot" aria-hidden="true"></div>
-              Available for new opportunities
+            <div class="hero__available" id="availabilityBadge" role="status">
+              <div
+                class="hero__available-dot"
+                aria-hidden="true"
+                id="availDot"
+              ></div>
+              <span id="availText">Available for new opportunities</span>
             </div>
 
             <h1 class="hero__name">
@@ -226,7 +232,7 @@
       </div>
     </section>
 
-    <!-- ══ ABOUT ══════════════════════════════════ -->
+    <!-- ══ ABOUT  -->
     <section class="section" id="about" aria-label="About me">
       <div class="container">
         <div class="about__grid">
@@ -682,8 +688,7 @@
                     ><span class="stack-tag">AI API</span>
                   </div>
                   <div class="project-card__links">
-                    <span
-                      class="project-link project-link--disabled"
+                    <span class="project-link project-link--disabled"
                       ><i class="fas fa-clock"></i> Launching Soon</span
                     >
                   </div>
@@ -812,6 +817,79 @@
               dashboards, subscription logic, and all the infrastructure that
               makes a product real.
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendly -->
+    <section
+      class="section calendly-section"
+      id="book"
+      aria-label="Book a call"
+    >
+      <div class="container">
+        <div class="calendly-inner">
+          <div class="calendly-copy">
+            <div class="section-label">Book a Call</div>
+            <h2 class="section-title">Let's Talk<br />Your Project.</h2>
+            <p class="section-sub">
+              Skip the back-and-forth. Book a free 30-minute discovery call and
+              let's figure out exactly how I can help you.
+            </p>
+
+            <div class="calendly-perks">
+              <div class="calendly-perk">
+                <div class="calendly-perk-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div>
+                  <strong>30 minutes</strong>
+                  <span>No obligation, no sales pitch</span>
+                </div>
+              </div>
+              <div class="calendly-perk">
+                <div class="calendly-perk-icon">
+                  <i class="fas fa-video"></i>
+                </div>
+                <div>
+                  <strong>Google Meet</strong>
+                  <span>Link sent automatically on booking</span>
+                </div>
+              </div>
+              <div class="calendly-perk">
+                <div class="calendly-perk-icon">
+                  <i class="fas fa-calendar-check"></i>
+                </div>
+                <div>
+                  <strong>Instant confirmation</strong>
+                  <span>Booking confirmed right away</span>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="https://calendly.com/tonydevcreation/30min"
+              target="_blank"
+              rel="noopener"
+              class="btn-primary calendly-cta"
+            >
+              <i class="fas fa-calendar-plus"></i>
+              Book a Free Call
+            </a>
+          </div>
+
+          <div class="calendly-widget-wrap">
+            <!-- Inline Calendly widget -->
+            <div
+              class="calendly-inline-widget"
+              data-url="https://calendly.com/tonydevcreation/30min?hide_gdpr_banner=1&background_color=13132A&text_color=EFEFFF&primary_color=CDFF47"
+            ></div>
+            <script
+              type="text/javascript"
+              src="https://assets.calendly.com/assets/external/widget.js"
+              async
+            ></script>
           </div>
         </div>
       </div>
@@ -970,7 +1048,9 @@
               <li><a href="#about" class="footer__link">About</a></li>
               <li><a href="#projects" class="footer__link">Projects</a></li>
               <li><a href="#services" class="footer__link">Services</a></li>
+              <li><a href="#book" class="nav__link">Book a Call</a></li>
               <li><a href="#contact" class="footer__link">Contact</a></li>
+              <li><a href="blog.html" class="nav__link">Blog</a></li>
             </ul>
           </nav>
           <div class="footer__social hero__social">
@@ -1015,6 +1095,18 @@
         </div>
       </div>
     </footer>
+
+    <div
+      class="availability-toggle-wrap"
+      id="availToggleWrap"
+      role="button"
+      aria-label="Toggle availability status"
+      tabindex="0"
+    >
+      <div class="avail-toggle-dot" id="availToggleDot"></div>
+      <span id="availToggleLabel">Available for hire</span>
+      <div class="avail-toggle-switch active" id="availToggleSwitch"></div>
+    </div>
 
     <script src="index.js"></script>
   </body>

@@ -467,3 +467,52 @@ form.addEventListener("submit", async (e) => {
     }, 4000);
   }
 });
+
+/* ── AVAILABILITY TOGGLE ─────────────────────────────────── */
+
+/**
+ * Reads state from localStorage so it persists between visits.
+ * Toggle pill at bottom of screen (admin-only — you can remove it
+ * from the HTML when you want to lock the status).
+ */
+(function initAvailability() {
+  const statusDot = document.getElementById("statusDot");
+  const availDot = document.getElementById("availDot");
+  const availText = document.getElementById("availText");
+  const toggleWrap = document.getElementById("availToggleWrap");
+  const toggleSwitch = document.getElementById("availToggleSwitch");
+  const toggleDot = document.getElementById("availToggleDot");
+  const toggleLabel = document.getElementById("availToggleLabel");
+
+  if (!statusDot) return;
+
+  let available = localStorage.getItem("td-available") !== "false";
+
+  function apply(val) {
+    available = val;
+    localStorage.setItem("td-available", val);
+
+    if (val) {
+      statusDot.classList.remove("unavailable");
+      availDot && availDot.classList.remove("unavailable");
+      toggleDot && toggleDot.classList.remove("unavailable");
+      toggleSwitch && toggleSwitch.classList.add("active");
+      if (availText) availText.textContent = "Available for new opportunities";
+      if (toggleLabel) toggleLabel.textContent = "Available for hire";
+    } else {
+      statusDot.classList.add("unavailable");
+      availDot && availDot.classList.add("unavailable");
+      toggleDot && toggleDot.classList.add("unavailable");
+      toggleSwitch && toggleSwitch.classList.remove("active");
+      if (availText)
+        availText.textContent = "Currently engaged — open for Q3 2026";
+      if (toggleLabel) toggleLabel.textContent = "Currently engaged";
+    }
+  }
+
+  apply(available);
+
+  if (toggleWrap) {
+    toggleWrap.addEventListener("click", () => apply(!available));
+  }
+})();
