@@ -399,6 +399,21 @@ body > *:not(style) {
   white-space: nowrap;
 }
 
+.btn-hire {
+  padding: 8px 20px;
+  background: var(--clr-accent);
+  color: var(--clr-accent-text);
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--r-sm);
+  transition: all var(--t-base);
+  white-space: nowrap;
+}
+
+[data-mobile-link].btn-hire {
+  width: fit-content;
+}
+
 .btn-hire:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow-accent);
@@ -480,12 +495,12 @@ body > *:not(style) {
     linear-gradient(90deg, var(--clr-border) 1px, transparent 1px);
   background-size: 60px 60px;
   opacity: 0.3;
-  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
   -webkit-mask-image: radial-gradient(
     ellipse at center,
     black 30%,
     transparent 80%
   );
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
 }
 
 .hero__orb {
@@ -869,6 +884,14 @@ body > *:not(style) {
   height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
+}
+
+.hero__photo-tag-dot--yellow {
+  background: #cdff47;
+}
+
+.hero__photo-tag-dot--green {
+  background: #52ffb8;
 }
 
 .hero__photo-tag.tag-tl {
@@ -1404,6 +1427,7 @@ body > *:not(style) {
 }
 
 .project-card__visual {
+  background: #080810;
   position: relative;
   aspect-ratio: 16/9;
   overflow: hidden;

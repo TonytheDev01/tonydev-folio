@@ -432,6 +432,7 @@ form.addEventListener("submit", async (e) => {
         access_key: "be31e38e-c9df-43a6-95c0-70e57ca5e9b4",
         name: form.querySelector("#contactName").value,
         email: form.querySelector("#contactEmail").value,
+        replyto: form.querySelector("#contactEmail").value,
         subject:
           form.querySelector("#contactSubject").value ||
           "New enquiry from portfolio",
