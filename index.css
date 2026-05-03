@@ -759,6 +759,7 @@ body > *:not(style) {
   width: clamp(260px, 35vw, 400px);
   animation: heroFloat 5s ease-in-out infinite;
   flex-shrink: 0;
+  will-change: transform;
 }
 
 @keyframes heroFloat {
@@ -786,6 +787,7 @@ body > *:not(style) {
   );
   animation: spinRing 6s linear infinite;
   z-index: 0;
+  will-change: transform;
 }
 
 @keyframes spinRing {
@@ -814,6 +816,7 @@ body > *:not(style) {
   border-radius: 50%;
   z-index: -1;
   animation: glowPulse 3s ease-in-out infinite;
+  will-change: opacity, transform;
 }
 
 @keyframes glowPulse {
@@ -2049,6 +2052,13 @@ body > *:not(style) {
   }
   .hero__photo-wrap {
     width: clamp(260px, 35vw, 400px);
+    animation: heroFloat 5s ease-in-out infinite;
+  }
+  .hero__photo-ring {
+    animation: spinRing 6s linear infinite;
+  }
+  .hero__photo-glow {
+    animation: glowPulse 3s ease-in-out infinite;
   }
   .hero__name {
     font-size: clamp(2.8rem, 5vw, 4.5rem);
@@ -2118,6 +2128,13 @@ body > *:not(style) {
   }
   .hero__photo-wrap {
     width: clamp(200px, 75vw, 350px);
+    animation: heroFloat 5s ease-in-out infinite;
+  }
+  .hero__photo-ring {
+    animation: spinRing 6s linear infinite;
+  }
+  .hero__photo-glow {
+    animation: glowPulse 3s ease-in-out infinite;
   }
   .hero__name {
     font-size: clamp(2.5rem, 10vw, 3.5rem);
