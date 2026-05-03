@@ -282,33 +282,34 @@ body > *:not(style) {
 
 .nav__inner {
   width: 100%;
-  padding: 0 var(--sp-8);
+  padding: 0 clamp(0.75rem, 3vw, 2rem);
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--sp-8);
+  gap: clamp(0.75rem, 4vw, 2rem);
 }
 
 .nav__logo {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: clamp(1.125rem, 3vw, 1.5rem);
   font-weight: 800;
   letter-spacing: -0.04em;
   display: flex;
   align-items: center;
   gap: var(--sp-2);
+  flex-shrink: 0;
 }
 
 .nav__logo-mark {
-  width: 32px;
-  height: 32px;
+  width: clamp(28px, 5vw, 32px);
+  height: clamp(28px, 5vw, 32px);
   background: var(--clr-accent);
   border-radius: var(--r-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.875rem;
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
   font-weight: 800;
   color: var(--clr-accent-text);
   flex-shrink: 0;
@@ -332,11 +333,12 @@ body > *:not(style) {
 }
 
 .nav__link {
-  font-size: 0.875rem;
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
   font-weight: 500;
   color: var(--clr-text-muted);
   position: relative;
   transition: color var(--t-fast);
+  white-space: nowrap;
 }
 
 .nav__link::after {
@@ -373,8 +375,8 @@ body > *:not(style) {
 }
 
 .nav__theme {
-  width: 38px;
-  height: 38px;
+  width: clamp(34px, 8vw, 38px);
+  height: clamp(34px, 8vw, 38px);
   border-radius: var(--r-full);
   border: 2px solid var(--clr-border-light);
   background: transparent;
@@ -382,8 +384,9 @@ body > *:not(style) {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 2vw, 1rem);
   transition: all var(--t-base);
+  flex-shrink: 0;
 }
 .nav__theme:hover {
   border-color: var(--clr-accent);
@@ -391,25 +394,15 @@ body > *:not(style) {
 }
 
 .btn-hire {
-  padding: 8px 20px;
+  padding: clamp(8px, 1.5vw, 8px) clamp(16px, 3vw, 20px);
   background: var(--clr-accent);
   color: var(--clr-accent-text);
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 2vw, 1rem);
   font-weight: 700;
   border-radius: var(--r-sm);
   transition: all var(--t-base);
   white-space: nowrap;
-}
-
-.btn-hire {
-  padding: 8px 20px;
-  background: var(--clr-accent);
-  color: var(--clr-accent-text);
-  font-size: 1rem;
-  font-weight: 700;
-  border-radius: var(--r-sm);
-  transition: all var(--t-base);
-  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 [data-mobile-link].btn-hire {
@@ -424,14 +417,15 @@ body > *:not(style) {
 .nav__hamburger {
   display: none;
   flex-direction: column;
-  gap: 5px;
-  width: 36px;
-  height: 36px;
+  gap: clamp(4px, 1vw, 5px);
+  width: clamp(32px, 8vw, 36px);
+  height: clamp(32px, 8vw, 36px);
   justify-content: center;
   align-items: center;
   border-radius: var(--r-sm);
   border: 1px solid var(--clr-border-light);
   color: var(--clr-text-muted);
+  flex-shrink: 0;
 }
 
 .nav__hamburger span {
@@ -476,7 +470,9 @@ body > *:not(style) {
 }
 
 .nav__mobile .nav__link {
-  font-size: 1.125rem;
+  font-size: clamp(1rem, 4vw, 1.125rem);
+  display: block;
+  padding: clamp(8px, 2vw, 12px) 0;
 }
 
 /*  HERO  */
@@ -2105,18 +2101,19 @@ body > *:not(style) {
 }
 
 /* Mobile */
-@media (max-width: 47.9em) {
+@media (max-width: 48em) {
   :root {
     --sp-24: 4rem;
     --sp-16: 3rem;
     --sp-6: 2.5rem;
+    --sp-8: 1.5rem;
   }
   .nav__links,
   .nav__actions .btn-hire {
-    display: none;
+    display: none !important;
   }
   .nav__hamburger {
-    display: flex;
+    display: flex !important;
   }
   .hero__layout {
     grid-template-columns: 1fr;
