@@ -2072,7 +2072,7 @@ body > *:not(style) {
   :root {
     --sp-24: 4rem;
     --sp-16: 3rem;
-    --sp-6: 2rem;
+    --sp-6: 2.5rem;
   }
   .nav__links,
   .nav__actions .btn-hire {
