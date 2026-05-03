@@ -281,13 +281,13 @@ body > *:not(style) {
 }
 
 .nav__inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 var(--sp-6);
+  width: 100%;
+  padding: 0 var(--sp-8);
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--sp-8);
 }
 
 .nav__logo {
@@ -327,6 +327,8 @@ body > *:not(style) {
   display: flex;
   align-items: center;
   gap: var(--sp-8);
+  flex: 1;
+  justify-content: center;
 }
 
 .nav__link {
@@ -2070,6 +2072,7 @@ body > *:not(style) {
   :root {
     --sp-24: 4rem;
     --sp-16: 3rem;
+    --sp-6: 2rem;
   }
   .nav__links,
   .nav__actions .btn-hire {
@@ -2092,8 +2095,10 @@ body > *:not(style) {
     height: 2rem;
   }
   .hero__actions {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--sp-4);
   }
   .hero__stats {
     gap: var(--sp-4);
