@@ -471,9 +471,9 @@ form.addEventListener("submit", async (e) => {
 /* ── AVAILABILITY TOGGLE ─────────────────────────────────── */
 
 /**
- * Reads state from localStorage so it persists between visits.
- * Toggle pill at bottom of screen (admin-only — you can remove it
- * from the HTML when you want to lock the status).
+ * Admin-only toggle activated via Ctrl+Shift+A (or Cmd+Shift+A on Mac)
+ * Toggle is hidden by default — only visible when admin mode is active.
+ * Availability status is always visible to everyone.
  */
 (function initAvailability() {
   const statusDot = document.getElementById("statusDot");
@@ -487,6 +487,12 @@ form.addEventListener("submit", async (e) => {
   if (!statusDot) return;
 
   let available = localStorage.getItem("td-available") !== "false";
+  let adminMode = localStorage.getItem("td-admin-mode") === "true";
+
+  // Hide toggle by default
+  if (toggleWrap) {
+    toggleWrap.style.display = adminMode ? "flex" : "none";
+  }
 
   function apply(val) {
     available = val;
@@ -510,9 +516,26 @@ form.addEventListener("submit", async (e) => {
     }
   }
 
+  function toggleAdminMode() {
+    adminMode = !adminMode;
+    localStorage.setItem("td-admin-mode", adminMode);
+    if (toggleWrap) {
+      toggleWrap.style.display = adminMode ? "flex" : "none";
+    }
+  }
+
   apply(available);
 
+  // Toggle click handler
   if (toggleWrap) {
     toggleWrap.addEventListener("click", () => apply(!available));
   }
+
+  // Admin mode keyboard shortcut: Ctrl+Shift+A (or Cmd+Shift+A on Mac)
+  document.addEventListener("keydown", (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "A") {
+      e.preventDefault();
+      toggleAdminMode();
+    }
+  });
 })();
