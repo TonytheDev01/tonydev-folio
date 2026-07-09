@@ -623,10 +623,9 @@ body > *:not(style) {
 /* Stats row */
 .hero__stats {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: var(--sp-5);
-  padding: 0px 10px 0px 15px;
+  gap: var(--sp-3);
+  padding: 0px 10px 0px 12px;
   flex-wrap: wrap;
   margin-bottom: var(--sp-6);
   animation: fadeUp 0.6s ease 0.25s both;
@@ -663,8 +662,7 @@ body > *:not(style) {
 /* Buttons */
 .hero__actions {
   display: flex;
-  justify-content: space-between;
-  gap: var(--sp-2);
+  gap: var(--sp-12);
   flex-wrap: wrap;
   padding-left: 15px;
   padding-right: 15px;
@@ -734,9 +732,8 @@ body > *:not(style) {
 /* Social icons */
 .hero__social {
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  gap: var(--sp-5);
+  gap: var(--sp-12);
   padding-left: 15px;
   animation: fadeUp 0.6s ease 0.35s both;
 }
