@@ -495,7 +495,7 @@ body > *:not(style) {
   opacity: 0.3;
   -webkit-mask-image: radial-gradient(
     ellipse at center,
-    black 30%,
+    black 40%,
     transparent 80%
   );
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
@@ -792,9 +792,9 @@ body > *:not(style) {
   background: conic-gradient(
     from 0deg,
     transparent 0%,
-    rgba(200, 255, 38, 0.6) 300%,
+    rgba(200, 255, 38, 0.6) 20%,
     transparent 40%,
-    rgba(205, 255, 71, 0.2) 70%,
+    rgba(191, 255, 13, 0.2) 80%,
     transparent 80%
   );
   animation: spinRing 6s linear infinite;
@@ -910,7 +910,7 @@ body > *:not(style) {
 }
 
 .hero__photo-tag-dot--green {
-  background: #52ffb8;
+  background: #16af2b;
 }
 
 .hero__photo-tag.tag-tl {
@@ -938,8 +938,9 @@ body > *:not(style) {
   font-family: var(--font-mono);
   letter-spacing: 0.1em;
   animation: fadeUp 0.6s ease 1s both;
-}
-.hero__scroll-line {
+} 
+
+ .hero__scroll-line {
   width: 1px;
   height: 40px;
   background: linear-gradient(to bottom, var(--clr-accent), transparent);
@@ -955,7 +956,7 @@ body > *:not(style) {
     opacity: 0.3;
     transform: scaleY(0.6);
   }
-}
+} 
 
 /*  ABOUT */
 .about__grid {
@@ -2075,9 +2076,15 @@ body > *:not(style) {
   .hero__name {
     font-size: clamp(2.8rem, 5vw, 4.5rem);
   }
+
+  .hero__actions{
+    display: flex;
+    align-items: center;
+    padding: 0px 15px 0px 15px;
+  }
   .btn-primary,
   .btn-outline {
-    padding: 13px 26px;
+    padding: 13px 13px;
     font-size: 0.9375rem;
   }
   .about__grid {
@@ -2106,6 +2113,21 @@ body > *:not(style) {
     padding: 14px 28px;
     font-size: 0.9375rem;
   }
+
+    .hero__photo-col {
+    justify-content: flex-end;
+  }
+  .hero__photo-wrap {
+    width: clamp(260px, 40vw, 500px);
+    animation: heroFloat 5s ease-in-out infinite;
+  }
+  .hero__photo-ring {
+    animation: spinRing 6s linear infinite;
+  }
+  .hero__photo-glow {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
   .about__grid {
     grid-template-columns: 1fr 1fr;
     gap: var(--sp-16);
