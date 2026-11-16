@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Anthony Michael (TonyDev) — Full-Stack Developer building scalable web applications, SaaS products, and pixel-perfect interfaces."
+      content="Anthony Michael (TonyDev) — Frontend Developer (React, React Native, Tailwind CSS) building accessible, production-grade interfaces. Frontend Lead on LIT; Winnov8 Build Path Challenge winner."
     />
     <meta
       property="og:title"
-      content="Anthony Michael — Full-Stack Developer"
+      content="Anthony Michael — Frontend Developer"
     />
     <meta
       property="og:description"
       content="I build scalable web apps, SaaS products, and pixel-perfect interfaces."
     />
     <meta property="og:type" content="website" />
-    <title>Anthony Michael — Full-Stack Developer</title>
+    <title>Anthony Michael — Frontend Developer</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
@@ -88,6 +88,7 @@
         <a href="#projects" class="nav__link" data-mobile-link>Projects</a>
         <a href="#services" class="nav__link" data-mobile-link>Services</a>
         <a href="#contact" class="nav__link" data-mobile-link>Contact</a>
+        <a href="blog.html" class="nav__link" data-mobile-link>Blog</a>
         <a href="#contact" class="btn-hire" data-mobile-link>Hire Me</a>
       </div>
     </header>
@@ -111,31 +112,32 @@
               <span class="hero__name-accent">Michael.</span>
             </h1>
 
-            <div class="hero__role-wrap" aria-live="polite">
+            <div class="hero__role-wrap">
               <span class="hero__role-prefix">I'm a </span>
               <span id="typewriter"></span>
             </div>
 
             <p class="hero__desc">
-              Full-stack developer from Nigeria building scalable web
-              applications, SaaS products, and pixel-perfect interfaces. I turn
-              ideas into production-ready products that actually work.
+              Frontend developer from Nigeria building fast, accessible
+              interfaces with React and React Native. Currently Frontend Lead on
+              an EdTech platform, turning designs and API contracts into
+              production-ready products that actually work.
             </p>
 
             <div class="hero__stats" aria-label="Quick stats">
               <div class="hero__stat-item">
-                <span class="hero__stat-num">6+</span>
-                <span class="hero__stat-label">Projects Built</span>
+                <span class="hero__stat-num">3</span>
+                <span class="hero__stat-label">Production Projects</span>
               </div>
               <div class="hero__stat-divider" aria-hidden="true"></div>
               <div class="hero__stat-item">
                 <span class="hero__stat-num">2</span>
-                <span class="hero__stat-label">SaaS Platforms</span>
+                <span class="hero__stat-label">Frontend Lead Roles</span>
               </div>
               <div class="hero__stat-divider" aria-hidden="true"></div>
               <div class="hero__stat-item">
-                <span class="hero__stat-num">2+</span>
-                <span class="hero__stat-label">Clients</span>
+                <span class="hero__stat-num">121+</span>
+                <span class="hero__stat-label">PRs Merged</span>
               </div>
               <div class="hero__stat-divider" aria-hidden="true"></div>
               <div class="hero__stat-item">
@@ -195,7 +197,7 @@
               <img
                 class="hero__photo-img"
                 src="assets/images/tonydev.png"
-                alt="Anthony Michael — Full-Stack Developer"
+                alt="Anthony Michael — Frontend Developer"
                 loading="eager"
               />
 
@@ -231,10 +233,10 @@
             <h2 class="section-title">I build things<br />for the web.</h2>
             <p>
               I'm <strong>Anthony Michael</strong>, a self-taught
-              <span class="about__highlight">Full-Stack Developer</span>
-              based in Nigeria. I design and build web applications that are
-              fast, accessible, and production-grade — from frontend UI to
-              backend APIs.
+              <span class="about__highlight">Frontend Developer</span>
+              based in Nigeria. I build web and mobile interfaces that are
+              fast, accessible, and production-grade, and I work closely with
+              backend teams through Swagger-first REST API contracts.
             </p>
             <p>
               Currently
@@ -247,10 +249,11 @@
               logistics app that won the Winnov8 Build Path Challenge.
             </p>
             <p>
-              My stack spans HTML5/CSS3/JavaScript to React, React Native,
-              Tailwind CSS, Node.js, and PostgreSQL. I've also built a full
-              e-commerce frontend <strong>(FreshBasket Market)</strong> and
-              client sites that are live and serving real users.
+              My stack spans HTML5/CSS3/JavaScript to React, React Native, and
+              Tailwind CSS, with REST API and JWT/OAuth integration. I've also
+              built a full e-commerce frontend
+              <strong>(FreshBasket Market)</strong> and my own product,
+              <strong>Idea-Engne</strong>, from scratch.
             </p>
             <p>
               When I'm not coding, I'm writing about web development I published
@@ -300,7 +303,7 @@
               <div class="terminal__line">
                 &nbsp;&nbsp;<span class="t-key">"role":</span>&nbsp;<span
                   class="t-str"
-                  >"Full-Stack Developer"</span
+                  >"Frontend Developer"</span
                 >,
               </div>
               <div class="terminal__line">
@@ -389,16 +392,13 @@
                 <div class="skill-group__icon">
                   <i class="fas fa-server" aria-hidden="true"></i>
                 </div>
-                <div class="skill-group__title">Backend &amp; Database</div>
+                <div class="skill-group__title">APIs &amp; Auth</div>
                 <div class="skill-pills">
-                  <span class="skill-pill featured">Node.js</span>
-                  <span class="skill-pill featured">Express.js</span>
-                  <span class="skill-pill featured">PostgreSQL</span>
-                  <span class="skill-pill">REST APIs</span>
-                  <span class="skill-pill">Swagger</span>
-                  <span class="skill-pill">JWT Auth</span>
-                  <span class="skill-pill">Supabase</span>
+                  <span class="skill-pill featured">REST APIs</span>
+                  <span class="skill-pill featured">Swagger</span>
+                  <span class="skill-pill featured">JWT Auth</span>
                   <span class="skill-pill">Appwrite</span>
+                  <span class="skill-pill">Supabase</span>
                 </div>
               </div>
 
@@ -471,9 +471,6 @@
             aria-label="Filter projects"
           >
             <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="fullstack">
-              Full-Stack
-            </button>
             <button class="filter-btn" data-filter="frontend">Frontend</button>
             <button class="filter-btn" data-filter="saas">SaaS</button>
             <button class="filter-btn" data-filter="other">Other</button>
@@ -486,7 +483,7 @@
               <!-- LIT — ongoing flagship -->
               <article
                 class="project-card project-card--glow-accent reveal"
-                data-category="fullstack frontend"
+                data-category="frontend"
               >
                 <div class="project-card__visual">
                   <img
@@ -499,15 +496,18 @@
                 </div>
 
                 <div class="project-card__content">
-                  <div class="project-card__category">Full-Stack · EdTech</div>
+                  <div class="project-card__category">
+                    Frontend Lead · EdTech
+                  </div>
                   <h3 class="project-card__title">
                     Laptope Institute of Technology (LIT)
                   </h3>
                   <p class="project-card__desc">
                     Multi-role EdTech platform with Landing, Learner, Tutor, and
-                    Admin experiences. Frontend Lead on a 7-person team — JWT
-                    auth, Swagger-first REST API integration, and backend-driven
-                    payment flows.
+                    Admin experiences. As Frontend Lead of a 7-person team I set
+                    the Git branching strategy (21 PRs merged dev → main), built
+                    the dashboards in React + Tailwind, and am integrating JWT
+                    auth against a Swagger-first REST API.
                   </p>
                   <div class="project-card__stack">
                     <span class="stack-tag">React</span>
@@ -523,9 +523,6 @@
                       rel="noopener noreferrer"
                       class="project-link primary"
                       ><i class="fas fa-external-link-alt"></i> Live Site</a
-                    >
-                    <span class="project-link project-link--disabled"
-                      ><i class="fas fa-lock"></i> Frontend Lead</span
                     >
                   </div>
                 </div>
@@ -552,10 +549,11 @@
                   </div>
                   <h3 class="project-card__title">ErrandGo</h3>
                   <p class="project-card__desc">
-                    Errand-running, delivery, and logistics mobile app. Built as
-                    part of a 4-person team that won the Winnov8 Build Path
-                    Challenge. V1 ships splash, onboarding, auth, verification,
-                    and dashboard screens — V2 in progress.
+                    Errand, delivery, and logistics mobile app. Frontend
+                    developer on a 4-person team (backend, PM, two product
+                    designers) that won the Winnov8 Build Path Challenge. V1
+                    ships 5 screens — splash, onboarding, sign in/up,
+                    verification, and dashboard. V2 is starting.
                   </p>
                   <div class="project-card__stack">
                     <span class="stack-tag">React Native</span>
@@ -568,17 +566,17 @@
                       href="https://github.com/TonytheDev01/errandgo-frontend"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="project-link"
+                      class="project-link primary"
                       ><i class="fab fa-github"></i> GitHub</a
                     >
                   </div>
                 </div>
               </article>
 
-              <!-- EventPro (featured accent glow) -->
+              <!-- EventPro -->
               <article
                 class="project-card project-card--glow-blue reveal"
-                data-category="fullstack saas"
+                data-category="saas frontend"
               >
                 <div class="project-card__visual">
                   <img
@@ -591,22 +589,25 @@
                 </div>
 
                 <div class="project-card__content">
-                  <div class="project-card__category">Full-Stack · SaaS</div>
+                  <div class="project-card__category">
+                    Frontend Lead · SaaS
+                  </div>
                   <h3 class="project-card__title">
                     EventPro — Event Management Platform
                   </h3>
                   <p class="project-card__desc">
-                    Multi-role SaaS with Admin, Organizer and Attendee
-                    dashboards. Real-time check-in, CSV import, JWT auth,
-                    Appwrite SMS/email, live PostgreSQL backend.
+                    TechCrush Bootcamp 2026 capstone: a multi-role platform with
+                    Admin, Organizer and Attendee dashboards. As Frontend Lead
+                    of a 9-person team I led 100+ merged PRs across 19+ feature
+                    branches and built role-aware routing, real-time check-in,
+                    CSV validation and Appwrite auth integration.
                   </p>
                   <div class="project-card__stack">
                     <span class="stack-tag">HTML5</span
                     ><span class="stack-tag">CSS3</span>
-                    <span class="stack-tag">Vanilla JS</span
-                    ><span class="stack-tag">Node.js</span>
-                    <span class="stack-tag">PostgreSQL</span
+                    <span class="stack-tag">JavaScript ES6+</span
                     ><span class="stack-tag">Appwrite</span>
+                    <span class="stack-tag">REST API</span>
                   </div>
                   <div class="project-card__links">
                     <a
@@ -639,7 +640,7 @@
                     alt="FreshBasket Market on multiple devices"
                     loading="lazy"
                   />
-                  <div class="project-card__badge">E-Commerce</div>
+                  <div class="project-card__badge">Solo Project</div>
                 </div>
 
                 <div class="project-card__content">
@@ -648,9 +649,10 @@
                   </div>
                   <h3 class="project-card__title">FreshBasket Market</h3>
                   <p class="project-card__desc">
-                    Full grocery delivery UI for the Nigerian market. Dynamic
-                    product grid, auth modal, coverage checker, cart and
-                    newsletter — vanilla JS throughout.
+                    Grocery delivery landing page for a Nigerian startup —
+                    product filtering, delivery-zone checker, naira pricing,
+                    auth modal, and mobile nav, built from scratch in vanilla
+                    JavaScript.
                   </p>
                   <div class="project-card__stack">
                     <span class="stack-tag">HTML5</span
@@ -677,111 +679,48 @@
                 </div>
               </article>
 
-              <!-- Hybrid Academy -->
+              <!-- Idea-Engne — personal project, in progress -->
               <article
                 class="project-card reveal reveal-delay-2"
-                data-category="frontend"
+                data-category="saas frontend"
               >
                 <div class="project-card__visual">
                   <img
                     class="mockup-screenshot"
-                    src="assets/images/restuarant.png"
-                    alt="Hybrid Academy Surulere website on multiple devices"
+                    src="assets/images/idea-engne.webp"
+                    alt="Idea-Engne landing page shown on desktop, tablet and phone"
+                    width="1200"
+                    height="675"
                     loading="lazy"
                   />
-                  <div class="project-card__badge">Client</div>
+                  <div class="project-card__badge">In Progress</div>
                 </div>
 
                 <div class="project-card__content">
                   <div class="project-card__category">
-                    Frontend · Client Work
+                    Personal Project · In Progress
                   </div>
-                  <h3 class="project-card__title">Hybrid Academy Surulere</h3>
-                  <p class="project-card__desc">
-                    Live website for a real client — Hybrid Academy in Surulere,
-                    Lagos. Clean, responsive, optimised for prospective students
-                    and parents.
-                  </p>
-                  <div class="project-card__stack">
-                    <span class="stack-tag">HTML5</span
-                    ><span class="stack-tag">CSS3</span
-                    ><span class="stack-tag">JavaScript</span>
-                  </div>
-                  <div class="project-card__links">
-                    <a href="#" class="project-link primary"
-                      ><i class="fas fa-external-link-alt"></i> Live Demo</a
-                    >
-                  </div>
-                </div>
-              </article>
-
-              <!-- Hybrid Academy (duplicate placeholder — pending replacement) -->
-              <article
-                class="project-card reveal reveal-delay-2"
-                data-category="frontend"
-              >
-                <div class="project-card__visual">
-                  <img
-                    class="mockup-screenshot"
-                    src="assets/images/restuarant.png"
-                    alt="Hybrid Academy Surulere website on multiple devices"
-                    loading="lazy"
-                  />
-                  <div class="project-card__badge">Client</div>
-                </div>
-
-                <div class="project-card__content">
-                  <div class="project-card__category">
-                    Frontend · Client Work
-                  </div>
-                  <h3 class="project-card__title">Hybrid Academy Surulere</h3>
-                  <p class="project-card__desc">
-                    Live website for a real client — Hybrid Academy in Surulere,
-                    Lagos. Clean, responsive, optimised for prospective students
-                    and parents.
-                  </p>
-                  <div class="project-card__stack">
-                    <span class="stack-tag">HTML5</span
-                    ><span class="stack-tag">CSS3</span
-                    ><span class="stack-tag">JavaScript</span>
-                  </div>
-                  <div class="project-card__links">
-                    <a href="#" class="project-link primary"
-                      ><i class="fas fa-external-link-alt"></i> Live Demo</a
-                    >
-                  </div>
-                </div>
-              </article>
-
-              <!-- Idea-Engne -->
-              <article class="project-card reveal" data-category="saas">
-                <div class="project-card__visual">
-                  <img
-                    class="mockup-screenshot"
-                    src="assets/images/restuarant.png"
-                    alt="Idea-Engne product preview"
-                    loading="lazy"
-                  />
-                  <div class="project-card__badge">Client</div>
-                </div>
-
-                <div class="project-card__content">
-                  <div class="project-card__category">SaaS · AI</div>
                   <h3 class="project-card__title">Idea-Engne</h3>
                   <p class="project-card__desc">
-                    AI-powered idea generation and validation SaaS. Helps
-                    entrepreneurs go from spark to structured concept.
-                    Subscription model — payments in progress.
+                    Content idea generator for creators and coaches — 30 days
+                    of niche-specific social media ideas. Built with zero
+                    frameworks using OOP JavaScript and the Intersection
+                    Observer API. Still in development; payments integration is
+                    next.
                   </p>
                   <div class="project-card__stack">
                     <span class="stack-tag">HTML5</span
                     ><span class="stack-tag">CSS3</span
-                    ><span class="stack-tag">JavaScript</span
-                    ><span class="stack-tag">AI API</span>
+                    ><span class="stack-tag">JavaScript ES6+</span
+                    ><span class="stack-tag">OOP</span>
                   </div>
                   <div class="project-card__links">
-                    <span class="project-link project-link--disabled"
-                      ><i class="fas fa-clock"></i> Launching Soon</span
+                    <a
+                      href="https://idea-engne-mdf.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-link primary"
+                      ><i class="fas fa-external-link-alt"></i> Live Preview</a
                     >
                   </div>
                 </div>
@@ -792,14 +731,16 @@
                 class="project-card reveal reveal-delay-1"
                 data-category="other"
               >
-                <div class="project-card__visual">
-                  <img
-                    class="mockup-screenshot"
-                    src="assets/images/restuarant.png"
-                    alt="HTML From Zero ebook cover"
-                    loading="lazy"
-                  />
-                  <div class="project-card__badge">Client</div>
+                <div
+                  class="project-card__visual project-card__visual--placeholder"
+                  role="img"
+                  aria-label="HTML From Zero ebook"
+                >
+                  <span class="placeholder-mark" aria-hidden="true">&lt;/&gt;</span>
+                  <span class="placeholder-note" aria-hidden="true"
+                    >HTML From Zero · Vol. 1</span
+                  >
+                  <div class="project-card__badge">Ebook</div>
                 </div>
 
                 <div class="project-card__content">
@@ -818,8 +759,40 @@
                     ><span class="stack-tag">Education</span>
                   </div>
                   <div class="project-card__links">
+                    <span class="project-link project-link--disabled"
+                      ><i class="fas fa-clock"></i> Link coming soon</span
+                    >
+                  </div>
+                </div>
+              </article>
+
+              <!-- Upcoming client slot -->
+              <article
+                class="project-card project-card--upcoming reveal reveal-delay-2"
+                data-category="other"
+              >
+                <div
+                  class="project-card__visual project-card__visual--placeholder"
+                  role="img"
+                  aria-label="Next client project coming soon"
+                >
+                  <span class="placeholder-mark" aria-hidden="true">+</span>
+                  <span class="placeholder-note" aria-hidden="true"
+                    >Next build</span
+                  >
+                  <div class="project-card__badge">Upcoming</div>
+                </div>
+
+                <div class="project-card__content">
+                  <div class="project-card__category">Client Work</div>
+                  <h3 class="project-card__title">Next Client Project</h3>
+                  <p class="project-card__desc">
+                    This slot is reserved for my next client build. Want it to
+                    be yours? Get in touch.
+                  </p>
+                  <div class="project-card__links">
                     <a href="#contact" class="project-link primary"
-                      ><i class="fas fa-shopping-cart"></i> Get the Book</a
+                      ><i class="fas fa-envelope"></i> Get in touch</a
                     >
                   </div>
                 </div>
@@ -881,10 +854,11 @@
             <div class="service-card__icon">
               <i class="fas fa-layer-group" aria-hidden="true"></i>
             </div>
-            <h3 class="service-card__title">Full-Stack Applications</h3>
+            <h3 class="service-card__title">Frontend Applications</h3>
             <p class="service-card__desc">
-              End-to-end apps with Node.js backends, PostgreSQL databases, REST
-              APIs, and auth systems. Deployed and production-ready.
+              React and vanilla JavaScript apps with role-based dashboards, REST
+              API integration, and auth flows — built from your design and API
+              specs.
             </p>
           </div>
           <div class="service-card reveal reveal-delay-2">
@@ -937,8 +911,8 @@
               Great Together.
             </h2>
             <p class="contact__info-desc">
-              Have a project in mind? Looking to hire? My inbox is always open
-              I'll get back to you within 30 minutes.
+              Have a project in mind? Looking to hire? My inbox is always open.
+              I reply within 24 hours.
             </p>
             <div class="contact__items">
               <div class="contact__item">
@@ -948,7 +922,9 @@
                 <div>
                   <div class="contact__item-label">Email</div>
                   <div class="contact__item-value">
-                    tonydevcreation@gmail.com
+                    <a href="mailto:tonydevcreation@gmail.com"
+                      >tonydevcreation@gmail.com</a
+                    >
                   </div>
                 </div>
               </div>
@@ -958,7 +934,14 @@
                 </div>
                 <div>
                   <div class="contact__item-label">LinkedIn</div>
-                  <div class="contact__item-value">anthony-chuksmichael</div>
+                  <div class="contact__item-value">
+                    <a
+                      href="https://www.linkedin.com/in/anthony-chuksmichael/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >anthony-chuksmichael</a
+                    >
+                  </div>
                 </div>
               </div>
               <div class="contact__item">
@@ -967,7 +950,14 @@
                 </div>
                 <div>
                   <div class="contact__item-label">GitHub</div>
-                  <div class="contact__item-value">TonytheDev01</div>
+                  <div class="contact__item-value">
+                    <a
+                      href="https://github.com/TonytheDev01"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >TonytheDev01</a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
@@ -1001,6 +991,14 @@
 
           <div class="contact__form reveal">
             <form id="contactForm" novalidate>
+              <input
+                type="checkbox"
+                name="botcheck"
+                id="botcheck"
+                hidden
+                tabindex="-1"
+                autocomplete="off"
+              />
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="contactName">Name</label>
@@ -1104,7 +1102,7 @@
         </div>
         <div class="footer__bottom">
           <p class="footer__credit">
-            &copy; 2025 <span>Anthony Michael</span>. Designed &amp; built with
+            &copy; 2026 <span>Anthony Michael</span>. Designed &amp; built with
             obsession.
           </p>
           <button class="back-to-top" id="backToTop" aria-label="Back to top">

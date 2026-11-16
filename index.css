@@ -2898,3 +2898,55 @@ body > *:not(style) {
   color: var(--clr-text-muted);
   margin: 0 0 var(--sp-6);
 }
+
+/* ============================================================
+   P0 additions — placeholders, disabled links, links in contact
+   ============================================================ */
+.project-link--disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.project-card__visual--placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  background: linear-gradient(
+    135deg,
+    var(--clr-card) 0%,
+    var(--clr-surface) 100%
+  );
+  border-bottom: 1px solid var(--clr-border);
+  font-family: var(--font-heading);
+}
+
+.placeholder-mark {
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--clr-accent);
+}
+
+.placeholder-note {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+}
+
+.project-card--upcoming {
+  opacity: 0.8;
+}
+
+.contact__item-value a {
+  color: inherit;
+  transition: color var(--t-fast);
+}
+
+.contact__item-value a:hover,
+.contact__item-value a:focus-visible {
+  color: var(--clr-accent);
+}
