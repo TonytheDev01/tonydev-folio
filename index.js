@@ -117,10 +117,10 @@ document
 
 /* ── 5. TYPEWRITER ───────────────────────────────────────── */
 const roles = [
-  "Full-Stack Developer",
-  "UI/UX Designer",
+  "Frontend Developer",
+  "React & React Native Dev",
+  "Frontend Team Lead",
   "Product Builder",
-  "SaaS Creator",
 ];
 
 let ri = 0,
@@ -129,6 +129,7 @@ let ri = 0,
 const tw = document.getElementById("typewriter");
 
 function type() {
+  if (!tw) return;
   const current = roles[ri];
   if (!deleting) {
     tw.textContent = current.slice(0, ++ci);
@@ -204,7 +205,11 @@ function createCarousel({ trackId, prevId, nextId, dotsId, itemSelector }) {
   }
 
   function getItems() {
-    return Array.from(track.querySelectorAll(itemSelector));
+    // Ignore cards hidden by the project filter, otherwise page count
+    // and card width are measured from display:none elements.
+    return Array.from(track.querySelectorAll(itemSelector)).filter(
+      (el) => el.style.display !== "none",
+    );
   }
 
   function getGapPx() {
@@ -353,6 +358,16 @@ function createCarousel({ trackId, prevId, nextId, dotsId, itemSelector }) {
   // Init
   buildDots();
   updateButtons();
+
+  // Called after the item set changes (e.g. project filter)
+  function refresh() {
+    currentIndex = 0;
+    track.style.transform = "translateX(0)";
+    buildDots();
+    updateButtons();
+  }
+
+  return { refresh };
 }
 
 // Init skills carousel
@@ -365,7 +380,7 @@ createCarousel({
 });
 
 // Init projects carousel
-createCarousel({
+const projectsCarousel = createCarousel({
   trackId: "projectsTrack",
   prevId: "projectsPrev",
   nextId: "projectsNext",
@@ -395,13 +410,11 @@ filterBtns.forEach((btn) => {
         card.style.display = show ? "" : "none";
       });
 
-    // Reset carousel to page 0 after filter change
-    const prevBtn = document.getElementById("projectsPrev");
-    const nextBtn = document.getElementById("projectsNext");
-    const track = document.getElementById("projectsTrack");
-    if (track) track.style.transform = "translateX(0)";
-    if (prevBtn) prevBtn.disabled = true;
-    if (nextBtn) nextBtn.disabled = false;
+    // Recalculate pages, dots and buttons for the filtered set
+    if (projectsCarousel) projectsCarousel.refresh();
+    filterBtns.forEach((b) =>
+      b.setAttribute("aria-pressed", String(b === btn)),
+    );
   });
 });
 
@@ -410,63 +423,75 @@ const form = document.getElementById("contactForm");
 const toast = document.getElementById("toast");
 let toastTimer;
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const name = form.querySelector("#contactName").value.trim();
-  const email = form.querySelector("#contactEmail").value.trim();
-  const message = form.querySelector("#contactMessage").value.trim();
-  if (!name || !email || !message) return;
+function showToast(message, isError = false) {
+  if (!toast) return;
+  toast.querySelector("span").textContent = message;
+  toast.style.borderColor = isError ? "var(--clr-red)" : "";
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+    toast.style.borderColor = "";
+  }, 4000);
+}
 
-  const submit = form.querySelector(".form-submit");
-  submit.disabled = true;
-  submit.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending…';
+if (form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const nameEl = form.querySelector("#contactName");
+    const emailEl = form.querySelector("#contactEmail");
+    const subjectEl = form.querySelector("#contactSubject");
+    const messageEl = form.querySelector("#contactMessage");
+    const botcheckEl = form.querySelector("#botcheck");
 
-  try {
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        access_key: "be31e38e-c9df-43a6-95c0-70e57ca5e9b4",
-        name: form.querySelector("#contactName").value,
-        email: form.querySelector("#contactEmail").value,
-        reply_to: form.querySelector("#contactEmail").value,
-        subject:
-          form.querySelector("#contactSubject").value ||
-          "New enquiry from portfolio",
-        message: form.querySelector("#contactMessage").value,
-      }),
-    });
+    const name = nameEl.value.trim();
+    const email = emailEl.value.trim();
+    const message = messageEl.value.trim();
 
-    const json = await res.json();
+    if (!name || !email || !message) {
+      showToast("Please fill in your name, email and message.", true);
+      return;
+    }
+    if (!emailEl.checkValidity()) {
+      showToast("Please enter a valid email address.", true);
+      return;
+    }
 
-    if (json.success) {
+    const submit = form.querySelector(".form-submit");
+    submit.disabled = true;
+    submit.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending…';
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "be31e38e-c9df-43a6-95c0-70e57ca5e9b4",
+          name,
+          email,
+          reply_to: email,
+          subject: subjectEl.value.trim() || "New enquiry from portfolio",
+          message,
+          botcheck: botcheckEl ? botcheckEl.checked : false,
+        }),
+      });
+
+      const json = await res.json();
+      if (!json.success) throw new Error("Submission failed");
+
+      form.reset();
+      showToast("Message sent! I'll get back to you soon.");
+    } catch {
+      showToast("Something went wrong. Please try again.", true);
+    } finally {
       submit.disabled = false;
       submit.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-      form.reset();
-      toast.classList.add("show");
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove("show"), 4000);
-    } else {
-      throw new Error("Submission failed");
     }
-  } catch {
-    submit.disabled = false;
-    submit.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-    toast.querySelector("span").textContent =
-      "Something went wrong. Please try again.";
-    toast.style.borderColor = "var(--clr-red)";
-    toast.classList.add("show");
-    toastTimer = setTimeout(() => {
-      toast.classList.remove("show");
-      toast.querySelector("span").textContent =
-        "Message sent! I'll get back to you soon.";
-      toast.style.borderColor = "";
-    }, 4000);
-  }
-});
+  });
+}
 
 /* ── AVAILABILITY TOGGLE ─────────────────────────────────── */
 
