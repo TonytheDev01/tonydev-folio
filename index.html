@@ -155,6 +155,14 @@
                 <i class="fas fa-envelope" aria-hidden="true"></i>
                 Get In Touch
               </a>
+              <a
+                href="assets/Anthony_Michael_CV.pdf"
+                class="btn-outline"
+                download
+              >
+                <i class="fas fa-download" aria-hidden="true"></i>
+                Download CV
+              </a>
             </div>
 
             <div class="hero__social" role="list" aria-label="Social links">
@@ -444,7 +452,7 @@
             >
               <i class="fas fa-chevron-left" aria-hidden="true"></i>
             </button>
-            <div class="carousel-dots" id="skillsDots" role="tablist"></div>
+            <div class="carousel-dots" id="skillsDots" role="group" aria-label="Skills pages"></div>
             <button
               class="carousel-btn"
               id="skillsNext"
@@ -470,10 +478,10 @@
             role="group"
             aria-label="Filter projects"
           >
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="frontend">Frontend</button>
-            <button class="filter-btn" data-filter="saas">SaaS</button>
-            <button class="filter-btn" data-filter="other">Other</button>
+            <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-btn" data-filter="frontend" aria-pressed="false">Frontend</button>
+            <button class="filter-btn" data-filter="saas" aria-pressed="false">SaaS</button>
+            <button class="filter-btn" data-filter="other" aria-pressed="false">Other</button>
           </div>
         </div>
 
@@ -813,7 +821,7 @@
             >
               <i class="fas fa-chevron-left" aria-hidden="true"></i>
             </button>
-            <div class="carousel-dots" id="projectsDots" role="tablist"></div>
+            <div class="carousel-dots" id="projectsDots" role="group" aria-label="Project pages"></div>
             <button
               class="carousel-btn"
               id="projectsNext"

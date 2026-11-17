@@ -96,7 +96,12 @@ document.addEventListener(
   { passive: true },
 );
 
+const hasFinePointer =
+  !window.matchMedia ||
+  window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
 (function animateCursor() {
+  if (!dot || !ring || !hasFinePointer) return;
   dot.style.left = mx + "px";
   dot.style.top = my + "px";
   rx += (mx - rx) * 0.12;
@@ -241,6 +246,7 @@ function createCarousel({ trackId, prevId, nextId, dotsId, itemSelector }) {
       const d = document.createElement("button");
       d.className = "carousel-dot" + (i === 0 ? " active" : "");
       d.setAttribute("aria-label", `Go to page ${i + 1}`);
+      d.setAttribute("type", "button");
       d.addEventListener("click", () =>
         goTo(i, i > currentIndex ? "right" : "left"),
       );
@@ -252,6 +258,20 @@ function createCarousel({ trackId, prevId, nextId, dotsId, itemSelector }) {
     if (!dotsEl) return;
     dotsEl.querySelectorAll(".carousel-dot").forEach((d, i) => {
       d.classList.toggle("active", i === currentIndex);
+      if (i === currentIndex) d.setAttribute("aria-current", "true");
+      else d.removeAttribute("aria-current");
+    });
+  }
+
+  function updateInert() {
+    const all = Array.from(track.querySelectorAll(itemSelector));
+    const items = getItems();
+    const vis = getVisibleCount();
+    all.forEach((el) => {
+      const i = items.indexOf(el);
+      const onScreen = i >= currentIndex && i < currentIndex + vis;
+      el.toggleAttribute("inert", !onScreen);
+      el.setAttribute("aria-hidden", String(!onScreen));
     });
   }
 
@@ -301,6 +321,7 @@ function createCarousel({ trackId, prevId, nextId, dotsId, itemSelector }) {
     animateNewCards(dir);
     updateDots();
     updateButtons();
+    updateInert();
   }
 
   prevBtn.addEventListener("click", () => {
@@ -358,6 +379,7 @@ function createCarousel({ trackId, prevId, nextId, dotsId, itemSelector }) {
   // Init
   buildDots();
   updateButtons();
+  updateInert();
 
   // Called after the item set changes (e.g. project filter)
   function refresh() {
@@ -365,6 +387,7 @@ function createCarousel({ trackId, prevId, nextId, dotsId, itemSelector }) {
     track.style.transform = "translateX(0)";
     buildDots();
     updateButtons();
+    updateInert();
   }
 
   return { refresh };
@@ -492,75 +515,3 @@ if (form) {
     }
   });
 }
-
-/* ── AVAILABILITY TOGGLE ─────────────────────────────────── */
-
-/**
- * Admin-only toggle activated via Ctrl+Shift+A (or Cmd+Shift+A on Mac)
- * Toggle is hidden by default — only visible when admin mode is active.
- * Availability status is always visible to everyone.
- */
-(function initAvailability() {
-  const statusDot = document.getElementById("statusDot");
-  const availDot = document.getElementById("availDot");
-  const availText = document.getElementById("availText");
-  const toggleWrap = document.getElementById("availToggleWrap");
-  const toggleSwitch = document.getElementById("availToggleSwitch");
-  const toggleDot = document.getElementById("availToggleDot");
-  const toggleLabel = document.getElementById("availToggleLabel");
-
-  if (!statusDot) return;
-
-  let available = localStorage.getItem("td-available") !== "false";
-  let adminMode = localStorage.getItem("td-admin-mode") === "true";
-
-  // Hide toggle by default
-  if (toggleWrap) {
-    toggleWrap.style.display = adminMode ? "flex" : "none";
-  }
-
-  function apply(val) {
-    available = val;
-    localStorage.setItem("td-available", val);
-
-    if (val) {
-      statusDot.classList.remove("unavailable");
-      availDot && availDot.classList.remove("unavailable");
-      toggleDot && toggleDot.classList.remove("unavailable");
-      toggleSwitch && toggleSwitch.classList.add("active");
-      if (availText) availText.textContent = "Available for new opportunities";
-      if (toggleLabel) toggleLabel.textContent = "Available for hire";
-    } else {
-      statusDot.classList.add("unavailable");
-      availDot && availDot.classList.add("unavailable");
-      toggleDot && toggleDot.classList.add("unavailable");
-      toggleSwitch && toggleSwitch.classList.remove("active");
-      if (availText)
-        availText.textContent = "Currently engaged — open for Q3 2026";
-      if (toggleLabel) toggleLabel.textContent = "Currently engaged";
-    }
-  }
-
-  function toggleAdminMode() {
-    adminMode = !adminMode;
-    localStorage.setItem("td-admin-mode", adminMode);
-    if (toggleWrap) {
-      toggleWrap.style.display = adminMode ? "flex" : "none";
-    }
-  }
-
-  apply(available);
-
-  // Toggle click handler
-  if (toggleWrap) {
-    toggleWrap.addEventListener("click", () => apply(!available));
-  }
-
-  // Admin mode keyboard shortcut: Ctrl+Shift+A (or Cmd+Shift+A on Mac)
-  document.addEventListener("keydown", (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "A") {
-      e.preventDefault();
-      toggleAdminMode();
-    }
-  });
-})();
