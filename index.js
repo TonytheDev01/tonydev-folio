@@ -515,3 +515,37 @@ if (form) {
     }
   });
 }
+
+/* ── PALETTE PREVIEW (temporary) ─────────────────────────── */
+(function palettePreview() {
+  const valid = ["lime", "brand", "teal"];
+  const root = document.documentElement;
+  let p = null;
+  try {
+    const q = new URLSearchParams(location.search).get("palette");
+    if (valid.includes(q)) localStorage.setItem("td-palette", q);
+    p = localStorage.getItem("td-palette");
+  } catch (e) {}
+  if (!valid.includes(p)) return;
+  const set = (v) => {
+    if (v === "lime") root.removeAttribute("data-palette");
+    else root.setAttribute("data-palette", v);
+    try { localStorage.setItem("td-palette", v); } catch (e) {}
+    box.querySelectorAll("button").forEach((b) =>
+      b.setAttribute("aria-pressed", String(b.dataset.p === v)));
+  };
+  const box = document.createElement("div");
+  box.className = "palette-switch";
+  box.setAttribute("role", "group");
+  box.setAttribute("aria-label", "Colour palette preview");
+  valid.forEach((v) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.dataset.p = v;
+    b.setAttribute("aria-label", v + " palette");
+    b.addEventListener("click", () => set(v));
+    box.appendChild(b);
+  });
+  document.body.appendChild(box);
+  set(p);
+})();
